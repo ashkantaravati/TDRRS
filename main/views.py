@@ -19,3 +19,6 @@ def login(request):
 
 def simple(request):
     return HttpResponse('<h1>salam</h1> <h2>{}</h2>'.format(request.GET.get('q','')))
+
+def readAllTimes():
+    return ''
