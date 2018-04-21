@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.template.loader import get_template
 import datetime
+from .models import DefenseTime
+from django.contrib.auth import authenticate,logout,login
 
 # Create your views here.
 def index(request):
@@ -12,13 +14,32 @@ def index(request):
    # return render(request, 'index.html', {'current_time': now})
     
 
-def login(request):
-   # return render(request, 'index.html', {'current_time': now})
-    return render(request, 'login.html')
-   
 
 def simple(request):
     return HttpResponse('<h1>salam</h1> <h2>{}</h2>'.format(request.GET.get('q','')))
 
-def readAllTimes():
-    return ''
+def readAllDefenseTimes(request):
+    
+    #defenseTimeRepo = DefenseTime()
+    #defenseTimeRepo.save()
+
+    defenseTimes = DefenseTime.objects.all()
+
+    return render(request, 'defenseTimes.html', {'defenseTimes': defenseTimes})
+
+
+def doLogout(request):
+    logout(request)
+    return HttpResponseRedirect('login')
+
+def doLogin(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        # Redirect to a success page.
+        ...
+    else:
+        # Return an 'invalid login' error message.
+        ...

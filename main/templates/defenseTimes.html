@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}
+زمان‌های موجود برای دفاع
+{% endblock %}
+            {% block content %}
+            <div class="columns is-multiline">
+                    <div class="column">
+                        <table class="table is-bordered is-striped is-narrow is-fullwidth has-text-right">
+            <thead>
+            <td>تاریخ برگزاری</td>
+            <td>ساعت شروع</td>
+            <td>ساعت پایان</td>
+            <td>مکان دفاع</td>
+            </thead>
+            <tbody>
+            {% for defenseTime in defenseTimes %}
+            <tr>
+                <td>{{ defenseTime.occurrenceDate }}</td>
+                <td>{{ defenseTime.startTime }}</td>
+                <td>{{ defenseTime.endTime }}</td>
+                <td>{{ defenseTime.defensePlace }}</td>
+            
+            </tr>
+            {% endfor %}
+        </tbody>
+            </table>
+            <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+                    <a class="pagination-previous">صفحه‌ی قبلی</a>
+                    <a class="pagination-next">صفحه‌ی بعد</a>
+                    <ul class="pagination-list">
+                      <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+                      <li><span class="pagination-ellipsis">&hellip;</span></li>
+                      <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+                      <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+                      <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+                      <li><span class="pagination-ellipsis">&hellip;</span></li>
+                      <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+                    </ul>
+                  </nav>
+            </div>
+            </div>
+            {% endblock %}
