@@ -38,8 +38,7 @@ def doLogin(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
-        # Redirect to a success page.
-        ...
+        return HttpResponseRedirect('index')
+        
     else:
-        # Return an 'invalid login' error message.
-        ...
+        return HttpResponse('failed')
