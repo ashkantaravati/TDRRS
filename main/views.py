@@ -14,10 +14,6 @@ def index(request):
    # return render(request, 'index.html', {'current_time': now})
     
 
-
-def simple(request):
-    return HttpResponse('<h1>salam</h1> <h2>{}</h2>'.format(request.GET.get('q','')))
-
 def readAllDefenseTimes(request):
     
     #defenseTimeRepo = DefenseTime()
@@ -33,12 +29,16 @@ def doLogout(request):
     return HttpResponseRedirect('login')
 
 def doLogin(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-        return HttpResponseRedirect('index')
+    if request.method=='GET':
+        return render(request,'login.html')
+    elif request.method=='POST':
         
-    else:
-        return HttpResponse('failed')
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('Dashboard')
+            
+        else:
+            return HttpResponse('failed')
