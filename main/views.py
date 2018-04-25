@@ -42,3 +42,5 @@ def doLogin(request):
             
         else:
             return HttpResponse('failed')
+def myRequests(request):
+    return HttpResponse('not implemented')

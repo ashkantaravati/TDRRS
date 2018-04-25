@@ -5,20 +5,29 @@
             {% block content %}
             <div class="columns is-multiline">
                     <div class="column">
+                        <button type="submit" class="button" >ثبت</button>
                         <table class="table is-bordered is-striped is-narrow is-fullwidth has-text-right">
             <thead>
+            <td>انتخاب</td>
+            <td>کد</td>
             <td>تاریخ برگزاری</td>
+            <td>روز هفته</td>
             <td>ساعت شروع</td>
             <td>ساعت پایان</td>
             <td>مکان دفاع</td>
+            <td>عملیات</td>
             </thead>
             <tbody>
             {% for defenseTime in defenseTimes %}
             <tr>
+                <td><input type="checkbox"></input></td>
+                <td>{{defenseTime.id}}</td>
                 <td>{{ defenseTime.occurrenceDate }}</td>
+                <td>شنبه</td>
                 <td>{{ defenseTime.startTime }}</td>
                 <td>{{ defenseTime.endTime }}</td>
                 <td>{{ defenseTime.defensePlace }}</td>
+                <td><a class="navbar-item"><span class="icon is-small"><i class="fa fa-check"></i> </span></td>
             
             </tr>
             {% endfor %}
@@ -28,13 +37,13 @@
                     <a class="pagination-previous">صفحه‌ی قبلی</a>
                     <a class="pagination-next">صفحه‌ی بعد</a>
                     <ul class="pagination-list">
-                      <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+                      <li><a class="pagination-link" aria-label="Goto page 1">۱</a></li>
                       <li><span class="pagination-ellipsis">&hellip;</span></li>
-                      <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
-                      <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
-                      <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+                      <li><a class="pagination-link" aria-label="Goto page 45">۴</a></li>
+                      <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">۵</a></li>
+                      <li><a class="pagination-link" aria-label="Goto page 47">۶</a></li>
                       <li><span class="pagination-ellipsis">&hellip;</span></li>
-                      <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+                      <li><a class="pagination-link" aria-label="Goto page 86">۱۰</a></li>
                     </ul>
                   </nav>
             </div>

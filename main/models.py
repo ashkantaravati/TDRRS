@@ -38,3 +38,5 @@ class DefenseTime(models.Model):
         return self.endTime-self.startTime    
     def __str__(self):
         return u"روز{} از {} تا{}".format(self.occurrenceDate,self.startTime,self.endTime)
+
+#class Student(models.Model):

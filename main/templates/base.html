@@ -63,7 +63,7 @@
                               <span class="icon is-small">
                                 <i class="fa fa-user-o"></i>
                               </span>
-                              نمایه
+                            آخرین ورود:<br/> {{user.last_login}}
                             </a>
                             <hr class="navbar-divider">
                             <a class="navbar-item" href="logout">
@@ -83,23 +83,24 @@
                 <div class="columns">
                   <aside class="column is-2 aside">
                     <nav class="menu">
-                      <p class="menu-label">
+                      {% comment %} <p class="menu-label">
                         عمومی
-                      </p>
+                      </p> {% endcomment %}
                       <ul class="menu-list">
                         <li><a href="{% url 'Dashboard' %}"><span class="icon is-small"><i class="fa fa-tachometer"></i></span> داشبورد</a></li>
                       </ul>
-                      <p class="menu-label">
+                      {% comment %} <p class="menu-label">
                         مدیریت
-                      </p>
+                      </p> {% endcomment %}
                       <ul class="menu-list">
                         <li><a class="is-active" href="{% url 'DefenseTimes' %}"><span class="icon is-small"><i class="fa fa-table"></i></span> زمان‌های قابل رزرو</a></li>            
-                        <li><a href="/bulma-admin-dashboard-template/presentations.html"><span class="icon is-small"><i class="fa fa-bar-chart"></i></span> درخواست‌های من</a></li>
+                        <li><a href="{% url 'MyRequests' %}"><span class="icon is-small"><i class="fa fa-bar-chart"></i></span> درخواست‌های من</a></li>
             
                         <li>
                           <a class=""><i class="fa fa-cog"></i></span> تنظیمات</a>
                           <ul>
-                            <li><a>تنظیم ۱</a></li>
+                              <li><a>تغییر گذرواژه</a></li>
+                              <li><a>تغییر پوسته</a></li>
                           </ul>
                         </li>
                       </ul>
@@ -107,7 +108,7 @@
                   </aside>
             
                   <main class="column main">
-                    {% include "includes/breadcrumb.html" %}
+                    {% comment %} {% include "includes/breadcrumb.html" %} {% endcomment %}
             
                     <div class="level">
                       <div class="level-left">
