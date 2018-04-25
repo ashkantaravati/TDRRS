@@ -84,16 +84,16 @@
                   <aside class="column is-2 aside">
                     <nav class="menu">
                       <p class="menu-label">
-                        General
+                        عمومی
                       </p>
                       <ul class="menu-list">
-                        <li><a href="/bulma-admin-dashboard-template/"><span class="icon is-small"><i class="fa fa-tachometer"></i></span> داشبورد</a></li>
+                        <li><a href="{% url 'Dashboard' %}"><span class="icon is-small"><i class="fa fa-tachometer"></i></span> داشبورد</a></li>
                       </ul>
                       <p class="menu-label">
                         مدیریت
                       </p>
                       <ul class="menu-list">
-                        <li><a class="is-active" href="#"><span class="icon is-small"><i class="fa fa-table"></i></span> زمان‌های قابل رزرو</a></li>            
+                        <li><a class="is-active" href="{% url 'DefenseTimes' %}"><span class="icon is-small"><i class="fa fa-table"></i></span> زمان‌های قابل رزرو</a></li>            
                         <li><a href="/bulma-admin-dashboard-template/presentations.html"><span class="icon is-small"><i class="fa fa-bar-chart"></i></span> درخواست‌های من</a></li>
             
                         <li>
@@ -107,17 +107,12 @@
                   </aside>
             
                   <main class="column main">
-                    <nav class="breadcrumb is-small" aria-label="breadcrumbs">
-                      <ul>
-                        <li><a href="Dashboard">داشبورد</a></li>
-                        <li class="is-active"><a href="#" aria-current="page">زمان‌های قابل رزرو</a></li>
-                      </ul>
-                    </nav>
+                    {% include "includes/breadcrumb.html" %}
             
                     <div class="level">
                       <div class="level-left">
                         <div class="level-item">
-                          <div class="title">زمان‌های قابل رزرو </div>
+                          <div class="title">{% block heading %}{% endblock heading %} </div>
                         </div>
                       </div>
                       <div class="level-right">
