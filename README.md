@@ -10,23 +10,24 @@ IAUCTB Thesis Defense Room Reservation System; Actually my bachelor's project
 * dashboard
 * url redirect
 * view all DefenseTimes
-* 
+* some other features...
 
-## ToDo (April 25)
+## ToDo ( in order of priority)
 * Change Password Feature
-* Change Theme Feature
-* Side Menu selected item CSS class
-* Add user information (Firstname Lastname etc.)
-* Change Django Admin Site layout to match project
+* Add user information:First Name,Last Name
+* dashboard user info summary
 * myRequests page
+* Change Django Admin Site layout to match project
+* Side Menu selected item CSS class
 * Submit DefenseTime
-
-## ToDo (Later)
+* Change Theme Feature
 * seperate into several apps
-* pagination
+* automatic pagination for 
+* Naming Conventions
+* Finalize Models
+* Refactor Views and URL configs 
 * authorization
-* reset password
+* Reset Password Feature
 * submit reservation request (POST)
 * search in table (criteria)
-* dashboard user info summary
 * cancel reservation requests
