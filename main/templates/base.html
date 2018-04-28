@@ -55,7 +55,7 @@
                             <!-- <img src="https://avatars1.githubusercontent.com/u/7221389?v=4&s=32"> -->
 
                           </figure>
-                          وقت بخیر {{ user.username }}!
+                          وقت بخیر {{ user.get_full_name }}!
                         </a>
                       
                         <div class="navbar-dropdown is-right">              
@@ -116,13 +116,13 @@
                           <div class="title">{% block heading %}{% endblock heading %} </div>
                         </div>
                       </div>
-                      <div class="level-right">
+                      <!-- <div class="level-right">
                         <div class="level-item">
                           <button type="button" class="button is-small">
                             March 8, 2017 - April 6, 2017
                           </button>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
             
             
