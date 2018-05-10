@@ -1,31 +1,31 @@
-# Things to include in Project Report
+# Software Engineering Concepts
+## DRY Principle
+## loose coupling
+## Agile
+## Prorotyping
 
-## Business
+# Internet Standards
+## HTTP
+## CSRF
 
+# Database 
+## ORM
 
+# Web Development Concepts
+## Web Framework
+## CSS Framework
 
-## Features
-
-
-
-## Used Technologies
-
-### Bulma
-
-### Django
-### AJAX
-### ORM
-
-### Web Framework
-
-### CSS Framework
-
-### Regular Expressions
+# Programming Concepts
+## Error Handling
+## Regular Expressions
 used for url configurations
 
-### anti CSRF
-
-### loose coupling
-### Agile
-### Prorotyping
-### SQLite
+# Used Technologies
+## SQLite
+## Bulma
+## Django
+## AJAX
+## JavaScript
+## Python3
+## HTML
+## CSS
