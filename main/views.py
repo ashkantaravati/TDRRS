@@ -3,21 +3,22 @@ from django.contrib.auth import authenticate,logout,login
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse,HttpResponseRedirect,JsonResponse
 from django.template.loader import get_template
 import datetime
 from .models import DefenseTime
+from main.forms import myForm
 
-# Create your views here.
-def index(request):
+
+def get_dashboard(request):
     if request.user.is_authenticated:
-        return render(request, 'index.html')
+        return render(request, 'dashboard.html')
     else:
         return HttpResponseRedirect('login')
-   # return render(request, 'index.html', {'current_time': now})
+   # return render(request, 'dashboard.html', {'current_time': now})
     
 
-def readAllDefenseTimes(request):
+def get_defense_times(request):
     
     #defenseTimeRepo = DefenseTime()
     #defenseTimeRepo.save()
@@ -27,11 +28,11 @@ def readAllDefenseTimes(request):
     return render(request, 'defenseTimes.html', {'defenseTimes': defenseTimes})
 
 
-def doLogout(request):
+def do_logout(request):
     logout(request)
     return HttpResponseRedirect('login')
 
-def doLogin(request):
+def do_login(request):
     if request.method=='GET':
         return render(request,'login.html')
     elif request.method=='POST':
@@ -45,10 +46,39 @@ def doLogin(request):
             
         else:
             return render(request,'login.html')
-def myRequests(request):
+
+def get_user_reservations(request):
     return render(request, 'myRequests.html')
 
-def changePassword(request):
+def do_submit_reservation(request):
+    result={}
+    if request.method=='POST':
+        defense_time_id=request.POST.get('id',None)
+        # some validations...
+        defense_time=DefenseTime.objects.filter(id=defense_time_id).first()
+        # check 
+    #
+    #
+        result['msg']='درخواست شما: {}'.format(str(defense_time))
+    return JsonResponse(result)
+
+def get_ajax_view(request):
+    
+    if request.method=='GET':
+        mf=myForm()
+        return render(request,'ajax.html',{'form':mf})
+    if request.method=='POST':
+        #mf=myForm(request.POST)
+        data={}
+        data['user']=request.user.__str__()
+        #data['fn']=mf.firstName
+        data['firstName']=request.POST['firstName']        
+        data['time']=datetime.datetime.now()
+        print(request.POST)
+        print(data)
+        return JsonResponse(data)
+        
+def do_change_password(request):
     request.session['result']=''
     if request.method=='GET':
         request.session['result']=''    

@@ -8,12 +8,14 @@
       
         <meta name="language" content="en-EN" />
         <meta name="author" content="Ashkan Taravati" />
-      
+        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://cdn.rawgit.com/rastikerdar/vazir-font/v18.0.1/dist/font-face.css" rel="stylesheet" type="text/css" />
         <title>{% block title %} {% endblock%}</title>
  <link rel="stylesheet" type="text/css" href="{% static 'main/main.css' %}"> 
+ {% block stylesheet %}{% endblock %}
+
 </head>
 <body dir="rtl">
 
@@ -94,12 +96,12 @@
                       </p> {% endcomment %}
                       <ul class="menu-list">
                         <li><a class="is-active" href="{% url 'DefenseTimes' %}"><span class="icon is-small"><i class="fa fa-table"></i></span> زمان‌های قابل رزرو</a></li>            
-                        <li><a href="{% url 'MyRequests' %}"><span class="icon is-small"><i class="fa fa-bar-chart"></i></span> درخواست‌های من</a></li>
+                        <li><a href="{% url 'UserRequests' %}"><span class="icon is-small"><i class="fa fa-bar-chart"></i></span> درخواست‌های من</a></li>
             
                         <li>
                           <a class=""><i class="fa fa-cog"></i></span> تنظیمات</a>
                           <ul>
-                              <li><a href="{% url 'changePassword' %}">تغییر گذرواژه</a></li>
+                              <li><a href="{% url 'ChangePassword' %}">تغییر گذرواژه</a></li>
                               <li><a>تغییر پوسته</a></li>
                           </ul>
                         </li>
@@ -136,6 +138,8 @@
               </div>
             
 
-
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+              <script src="{% static 'main/main.js' %}"></script>
+    {% block javascript %}{% endblock %}
 </body>
 </html>

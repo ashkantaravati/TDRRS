@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+زمان‌های موجود برای دفاع
+{% endblock %}
+            {% block content %}
+            <form action="" method="post" novalidate>
+                <table>
+                    {{ form.as_table }}
+                </table>
+                {% csrf_token %}
+                <input id="id_submit" type="button" value="ثبت" onclick="doAjax()">
+            </form>
+            <p id='result'></p>
+            {% endblock %}

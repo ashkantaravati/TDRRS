@@ -27,7 +27,14 @@
                 <td>{{ defenseTime.startTime }}</td>
                 <td>{{ defenseTime.endTime }}</td>
                 <td>{{ defenseTime.defensePlace }}</td>
-                <td><a class="navbar-item"><span class="icon is-small"><i class="fa fa-check"></i> </span></td>
+                
+                <td>
+                    <a class="navbar-item" onclick="postReservationRequest(this,'{% url 'SubmitReservation' %}');" data-id="{{defenseTime.id}}">
+                        <span class="icon is-small">
+                            <i class="fa fa-check"></i>
+                        </span>
+                    </a>
+                </td>
             
             </tr>
             {% endfor %}
@@ -49,3 +56,25 @@
             </div>
             </div>
             {% endblock %}
+
+            {% block javascript %}
+                <script>
+
+                    function postReservationRequest(sender,endpoint){
+                        let did=$(sender).data('id');
+                        //alert(did);
+                        $.ajax({
+                            url:endpoint,
+                            data:{id:did},
+                            dataType:'JSON',
+                            method:'POST',
+                            success:function(result){
+                                alert(result.msg);
+                            },
+                            error:function(){
+                                alert('error');
+                            }
+                        })
+                        }
+                </script>
+            {% endblock javascript %}

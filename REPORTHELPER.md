@@ -13,12 +13,7 @@
 ### Bulma
 
 ### Django
-
-### 
-
-
-## Concepts
-
+### AJAX
 ### ORM
 
 ### Web Framework
@@ -28,3 +23,9 @@
 ### Regular Expressions
 used for url configurations
 
+### anti CSRF
+
+### loose coupling
+### Agile
+### Prorotyping
+### SQLite
