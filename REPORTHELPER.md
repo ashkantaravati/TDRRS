@@ -29,3 +29,6 @@ used for url configurations
 ## Python3
 ## HTML
 ## CSS
+## Pagination
+## OOP
+## docstring

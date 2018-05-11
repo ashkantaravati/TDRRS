@@ -22,11 +22,11 @@
             <tr>
                 <td><input type="checkbox"></input></td>
                 <td>{{defenseTime.id}}</td>
-                <td>{{ defenseTime.occurrenceDate }}</td>
-                <td>شنبه</td>
-                <td>{{ defenseTime.startTime }}</td>
-                <td>{{ defenseTime.endTime }}</td>
-                <td>{{ defenseTime.defensePlace }}</td>
+                <td>{{ defenseTime.occurrence_date }}</td>
+                <td>{{ defenseTime.weekday }}</td>
+                <td>{{ defenseTime.start_time }}</td>
+                <td>{{ defenseTime.end_time }}</td>
+                <td>{{ defenseTime.defense_place }}</td>
                 
                 <td>
                     <a class="navbar-item" onclick="postReservationRequest(this,'{% url 'SubmitReservation' %}');" data-id="{{defenseTime.id}}">

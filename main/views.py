@@ -6,10 +6,10 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponse,HttpResponseRedirect,JsonResponse
 from django.template.loader import get_template
 import datetime
-from .models import DefenseTime
+from .models import DefenseTime,ReservationRequest
 from main.forms import myForm
 
-
+# TODO authorization
 def get_dashboard(request):
     if request.user.is_authenticated:
         return render(request, 'dashboard.html')
@@ -48,7 +48,8 @@ def do_login(request):
             return render(request,'login.html')
 
 def get_user_reservations(request):
-    return render(request, 'myRequests.html')
+    reservation_requests=ReservationRequest.objects.all()
+    return render(request, 'userRequests.html',{'reservation_requests': reservation_requests})
 
 def do_submit_reservation(request):
     result={}
@@ -57,10 +58,19 @@ def do_submit_reservation(request):
         # some validations...
         defense_time=DefenseTime.objects.filter(id=defense_time_id).first()
         # check 
+        try:
+            reservereq=ReservationRequest.objects.create(
+                requested_defense_time=defense_time,
+                request_date_time=datetime.datetime.now(),
+                requesting_student=request.user.student)
+            result['msg']='درخواست شما: {}'.format(str(defense_time))
+        except Exception as err:
+            result['msg']='خطا {}'.format(err)
     #
-    #
-        result['msg']='درخواست شما: {}'.format(str(defense_time))
     return JsonResponse(result)
+
+def do_submit_cancellation(request):
+    pass
 
 def get_ajax_view(request):
     
