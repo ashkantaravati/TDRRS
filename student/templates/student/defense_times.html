@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "student/dashboard_layout.html" %}
 {% block title %}
 زمان‌های موجود برای دفاع
 {% endblock %}
@@ -29,7 +29,7 @@
                 <td>{{ defenseTime.defense_place }}</td>
                 
                 <td>
-                    <a class="navbar-item" onclick="postReservationRequest(this,'{% url 'SubmitReservation' %}');" data-id="{{defenseTime.id}}">
+                    <a class="navbar-item" onclick="postReservationRequest(this,'{% url 'submit_reservation' %}');" data-id="{{defenseTime.id}}">
                         <span class="icon is-small">
                             <i class="fa fa-check"></i>
                         </span>

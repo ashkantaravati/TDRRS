@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "student/dashboard_layout.html" %}
 {% block title %}
 درخواست‌های من
 {% endblock title %}
@@ -24,7 +24,7 @@
     <td>{{ reservation_request.requesting_student }}</td>
     
     <td>
-        <a class="navbar-item" onclick="postCancelationRequest(this,'{% url 'CancelReservation' %}');" data-id="{{reservationRequest.id}}">
+        <a class="navbar-item" onclick="postCancelationRequest(this,'{% url 'cancel_reservation' %}');" data-id="{{reservationRequest.id}}">
             <span class="icon is-small">
                 <i class="fa fa-check"></i>
             </span>

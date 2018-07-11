@@ -1,24 +1,22 @@
-# Software Engineering Concepts
+# Software Design Concepts
+## Code Reusablity
 ## DRY Principle
 ## loose coupling
-## Agile
-## Prorotyping
+## Seperation of Concerns
+## MVC
 
-# Internet Standards
+# Agile 
+
+# Internet Concepts
 ## HTTP
 ## CSRF
 
-# Database 
-## ORM
 
-# Web Development Concepts
+# Software Development Concepts
 ## Web Framework
 ## CSS Framework
+## ORM and DataMapper
 
-# Programming Concepts
-## Error Handling
-## Regular Expressions
-used for url configurations
 
 # Used Technologies
 ## SQLite
@@ -32,3 +30,14 @@ used for url configurations
 ## Pagination
 ## OOP
 ## docstring
+## Git
+
+# TDRRS Intro
+## Goals
+## Models
+## Instroductions to use
+## Django structure
+## MTV
+## Models
+## Url Dispatcher
+## 
