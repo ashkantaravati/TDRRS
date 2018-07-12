@@ -15,22 +15,16 @@ def get_dashboard(request):
         return render(request, 'student/dashboard.html')
     else:
         return HttpResponseRedirect('login')
-   # return render(request, 'dashboard.html', {'current_time': now})
-    
-
 def get_defense_times(request):
-    
-    #defenseTimeRepo = DefenseTime()
-    #defenseTimeRepo.save()
+    defense_times = DefenseTime.objects.all()
 
-    defenseTimes = DefenseTime.objects.all()
-
-    return render(request, 'defense_times.html', {'defenseTimes': defenseTimes})
+    return render(request, 'student/defense_times.html', {'defense_times': defense_times})
 
 
 def do_logout(request):
     logout(request)
-    return HttpResponseRedirect('login')
+    return HttpResponseRedirect('/')
+
 
 def do_login(request):
     if request.method=='GET':
