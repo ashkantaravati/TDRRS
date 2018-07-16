@@ -13,7 +13,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # TODO authorization
 def get_dashboard(request):
     if request.user.is_authenticated:
-        return render(request, 'student/dashboard.html')
+        reservation_requests=ReservationRequest.objects.all()
+        return render(request, 'student/dashboard.html',{'reservation_requests': reservation_requests})
     else:
         return HttpResponseRedirect('login')
 def get_defense_times(request):
@@ -36,18 +37,20 @@ def do_logout(request):
 
 def do_login(request):
     if request.method=='GET':
-        return render(request,'student/login.html')
+        return render(request,'student/loginBs.html')        
+        #return render(request,'student/login.html')
     elif request.method=='POST':
         
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.POST.get('username')
+        password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             return HttpResponseRedirect('dashboard')
             
         else:
-            return render(request,'student/login.html')
+            return render(request,'student/loginBs.html')        
+            #return render(request,'student/login.html')
 
 def get_user_reservations(request):
     reservation_requests=ReservationRequest.objects.all()
@@ -65,7 +68,7 @@ def do_submit_reservation(request):
                 requested_defense_time=defense_time,
                 request_date_time=datetime.datetime.now(),
                 requesting_student=request.user.student)
-            result['msg']='درخواست شما: {}'.format(str(defense_time))
+            result['msg']='درخواست شما: {} با موفقیت ثبت شد'.format(str(defense_time))
         except Exception as err:
             result['msg']='خطا {}'.format(err)
     #

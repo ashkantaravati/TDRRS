@@ -50,8 +50,10 @@ class Student(models.Model):
     student_number=models.CharField(max_length=12,verbose_name='شماره دانشجویی')
     major=models.ForeignKey('Major',verbose_name='رشته‌ی تحصیلی')
     degree=models.IntegerField(choices=DEGREE_CHOICES,verbose_name='مقطع تحصیلی')
+    father_name=models.CharField(verbose_name='نام پدر',max_length=10)
+    national_id=models.CharField(verbose_name='شماره ملی',max_length=10)
     #...
-    user_account=models.OneToOneField(User,verbose_name='حساب کاربری')
+    user_account=models.OneToOneField(User,verbose_name='حساب کاربری', related_name='student')
     class Meta:
         verbose_name=u'دانشجو'
         verbose_name_plural=u'دانشجویان'  
