@@ -1,80 +1,99 @@
-{% extends "student/dashboard_layout.html" %}
-{% block title %}
-زمان‌های موجود برای دفاع
-{% endblock %}
-            {% block content %}
-            <div class="columns is-multiline">
-                    <div class="column">
-                        <button type="submit" class="button" >ثبت</button>
-                        <table class="table is-bordered is-striped is-narrow is-fullwidth has-text-right">
+{% extends "student/dashboard_layout.html" %} 
+{% block title %} زمان‌های موجود برای دفاع {% endblock %} 
+{% block content %}
+<div class="columns is-multiline">
+    <div class="column">
+        <button type="submit" class="button">ثبت</button>
+        <table class="table is-bordered is-striped is-narrow is-fullwidth has-text-right">
             <thead>
-            <td>انتخاب</td>
-            <td>کد</td>
-            <td>تاریخ برگزاری</td>
-            <td>روز هفته</td>
-            <td>ساعت شروع</td>
-            <td>ساعت پایان</td>
-            <td>مکان دفاع</td>
-            <td>عملیات</td>
+                <td>انتخاب</td>
+                <td>کد</td>
+                <td>تاریخ برگزاری</td>
+                <td>روز هفته</td>
+                <td>ساعت شروع</td>
+                <td>ساعت پایان</td>
+                <td>مکان دفاع</td>
+                <td>عملیات</td>
             </thead>
             <tbody>
-            {% for defenseTime in defenseTimes %}
-            <tr>
-                <td><input type="checkbox"></input></td>
-                <td>{{defenseTime.id}}</td>
-                <td>{{ defenseTime.occurrence_date }}</td>
-                <td>{{ defenseTime.weekday }}</td>
-                <td>{{ defenseTime.start_time }}</td>
-                <td>{{ defenseTime.end_time }}</td>
-                <td>{{ defenseTime.defense_place }}</td>
+                {% for defense_time in defense_times %}
+                <tr>
+                    <td>
+                        <input type="checkbox"></input>
+                    </td>
+                    <td>{{ defense_time.id }}</td>
+                    <td>{{ defense_time.occurrence_date }}</td>
+                    <td>{{ defense_time.weekday }}</td>
+                    <td>{{ defense_time.start_time }}</td>
+                    <td>{{ defense_time.end_time }}</td>
+                    <td>{{ defense_time.defense_place }}</td>
+
+                    <td>
+                        <a class="navbar-item" onclick="postReservationRequest(this,'{% url 'submit_reservation' %}');" data-id="{{defense_time.id}}">
+                            <span class="icon is-small">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+            {% if defense_time.has_other_pages %} 
+            {% if defense_time.has_previous %}
+            <a class="pagination-previous" href="?page={{ defense_time.previous_page_number }}">صفحه‌ی قبلی</a>
+            {% else %}
+            <a class="disabled pagination-previous">صفحه‌ی قبلی</a>
+            {% endif %}
+            <ul class="pagination-list">
+                {% for i in defense_time.paginator.page_range %} 
+                {% if defense_time.number == i %}
+                <li>
+                    <a class="selected pagination-link" aria-label="Goto page {{ i }}">{{ i }}</a>
+                </li>
                 
-                <td>
-                    <a class="navbar-item" onclick="postReservationRequest(this,'{% url 'submit_reservation' %}');" data-id="{{defenseTime.id}}">
-                        <span class="icon is-small">
-                            <i class="fa fa-check"></i>
-                        </span>
-                    </a>
-                </td>
-            
-            </tr>
-            {% endfor %}
-        </tbody>
-            </table>
-            <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-                    <a class="pagination-previous">صفحه‌ی قبلی</a>
-                    <a class="pagination-next">صفحه‌ی بعد</a>
-                    <ul class="pagination-list">
-                      <li><a class="pagination-link" aria-label="Goto page 1">۱</a></li>
-                      <li><span class="pagination-ellipsis">&hellip;</span></li>
-                      <li><a class="pagination-link" aria-label="Goto page 45">۴</a></li>
-                      <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">۵</a></li>
-                      <li><a class="pagination-link" aria-label="Goto page 47">۶</a></li>
-                      <li><span class="pagination-ellipsis">&hellip;</span></li>
-                      <li><a class="pagination-link" aria-label="Goto page 86">۱۰</a></li>
-                    </ul>
-                  </nav>
-            </div>
-            </div>
-            {% endblock %}
 
-            {% block javascript %}
-                <script>
+                {% else %}
+                <li>
+                    <a class="pagination-link" aria-label="Goto page {{ i }}" href="?page={{ i }}">{{ i }}</a>
+                </li>
+                {% endif %} 
+                {% endfor %}
+            </ul>
+            {% if users.has_next %}
+            <a class="pagination-next" href="?page={{ defense_time.next_page_number }}">صفحه‌ی بعدی</a>
+            {% else %}
+            <a class="disabled pagination-next">صفحه‌ی بعدی</a>
 
-                    function postReservationRequest(sender,endpoint){
-                        let did=$(sender).data('id');
-                        //alert(did);
-                        $.ajax({
-                            url:endpoint,
-                            data:{id:did},
-                            dataType:'JSON',
-                            method:'POST',
-                            success:function(result){
-                                alert(result.msg);
-                            },
-                            error:function(){
-                                alert('error');
-                            }
-                        })
-                        }
-                </script>
-            {% endblock javascript %}
+    {% endif %}
+        {% else %}
+        <p>nope</p>
+    {% endif %}
+        </nav>
+    </div>
+</div>
+{% endblock %} 
+{% block javascript %}
+<script>
+    function postReservationRequest(sender, endpoint) {
+        let did = $(sender).data('id');
+        //alert(did);
+        $.ajax({
+            url: endpoint,
+            data: {
+                id: did
+            },
+            dataType: 'JSON',
+            method: 'POST',
+            success: function (result) {
+                alert(result.msg);
+            },
+            error: function () {
+                alert('error');
+            }
+        })
+    }
+</script>
+{% endblock javascript %}
