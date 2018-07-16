@@ -1,3 +1,8 @@
+
+body{
+    font-family: 'vazir' !important;
+}
+
 .nav-tag {
     padding-right: 30px
 }
@@ -90,7 +95,12 @@
 }
 
 /*# sourceMappingURL=main.css.map*/
-
-body{
-    font-family: 'vazir' !important;
+/*parisa-style____________start*/
+.rtlDirection{
+    direction: rtl;
 }
+.rtlAlignment{
+    text-align: right;
+}
+
+/*parisa-style____________end*/
