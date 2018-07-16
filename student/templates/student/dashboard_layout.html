@@ -1,145 +1,142 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
+
 <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=7">
-      
-        <meta name="language" content="en-EN" />
-        <meta name="author" content="Ashkan Taravati" />
-        
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="https://cdn.rawgit.com/rastikerdar/vazir-font/v18.0.1/dist/font-face.css" rel="stylesheet" type="text/css" />
-        <title>{% block title %} {% endblock%}</title>
- <link rel="stylesheet" type="text/css" href="{% static 'student/main.css' %}"> 
- {% block stylesheet %}{% endblock %}
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=7">
+
+  <meta name="language" content="en-EN" />
+  <meta name="author" content="Ashkan Taravati" />
+  <title>{% block title %} {% endblock%}</title>
+
+  <link rel="stylesheet" href="../../static/student/style.css">
+  <link rel="stylesheet" href="../../static/student/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.rawgit.com/rastikerdar/vazir-font/v18.0.1/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+  
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+    crossorigin="anonymous"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'student/main.css' %}"> {% block stylesheet %}{% endblock %}
 
 </head>
-<body dir="rtl">
 
-
-
-        <header class="hero is-light">
-                <div class="hero-head">
-                  <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
-                    <div class="navbar-brand">
-            
-                      <a class="navbar-item is--brand">
-                        <!-- <img class="navbar-brand-logo" src="/bulma-admin-dashboard-template/logo.png" alt="Bulma Admin Template logo"> -->
-                    سامانه رزرو اتاق دفاع  
-                    </a>
-                      <a class="navbar-item is-tab is-hidden-mobile is-active"><span class="icon is-medium"><i class="fa fa-home"></i></span>اصلی</a>
-                      <a class="navbar-item is-tab is-hidden-mobile">راهنما</a>
-                      
-                      <button class="button navbar-burger" data-target="navMenu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </button>
-            
-                    </div>
-            
-            
-                    <div class="navbar-menu navbar-end" id="navMenu">
-                      <a class="navbar-item is-tab is-hidden-tablet is-active">اصلی</a>
-                      <a class="navbar-item is-tab is-hidden-tablet">راهنما</a>
-                      <a class="navbar-item nav-tag">              
-                        <span class="icon is-small">
-                          <i class="fa fa-envelope-o"></i>
-                        </span>
-                        <span class="tag is-primary tag-notif">6</span>
-                      </a>  
-                      <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">              
-                          <figure class="image is-32x32" style="margin-right:.5em;">
-                            <!-- <img src="https://avatars1.githubusercontent.com/u/7221389?v=4&s=32"> -->
-
-                          </figure>
-                          وقت بخیر {{ user.get_full_name }}!
-                        </a>
-                      
-                        <div class="navbar-dropdown is-right">              
-                            <a class="navbar-item">
-                              <span class="icon is-small">
-                                <i class="fa fa-user-o"></i>
-                              </span>
-                            آخرین ورود:<br/> {{user.last_login}}
-                            </a>
-                            <hr class="navbar-divider">
-                            <a class="navbar-item" href="logout">
-                              <span class="icon is-small">
-                                <i class="fa fa-power-off"></i>
-                              </span>
-                              خروج
-                            </a>
-                        </div>
-                      </div>
-                    </div>
-                  </nav>
-                </div>
-              </header>
-            
-              <div class="wrapper">
-                <div class="columns">
-                  <aside class="column is-2 aside">
-                    <nav class="menu">
-                      {% comment %} <p class="menu-label">
-                        عمومی
-                      </p> {% endcomment %}
-                      <ul class="menu-list">
-                        <li><a href="{% url 'dashboard' %}"><span class="icon is-small"><i class="fa fa-tachometer"></i></span> داشبورد</a></li>
-                      </ul>
-                      {% comment %} <p class="menu-label">
-                        مدیریت
-                      </p> {% endcomment %}
-                      <ul class="menu-list">
-                        <li><a class="is-active" href="{% url 'defense_times' %}"><span class="icon is-small"><i class="fa fa-table"></i></span> زمان‌های قابل رزرو</a></li>            
-                        <li><a href="{% url 'user_requests' %}"><span class="icon is-small"><i class="fa fa-bar-chart"></i></span> درخواست‌های من</a></li>
-            
-                        <li>
-                          <a class=""><i class="fa fa-cog"></i></span> تنظیمات</a>
-                          <ul>
-                              <li><a href="{% url 'change_password' %}">تغییر گذرواژه</a></li>
-                              <li><a>تغییر پوسته</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </nav>
-                  </aside>
-            
-                  <main class="column main">
-                    {% comment %} {% include "includes/breadcrumb.html" %} {% endcomment %}
-            
-                    <div class="level">
-                      <div class="level-left">
-                        <div class="level-item">
-                          <div class="title">{% block heading %}{% endblock heading %} </div>
-                        </div>
-                      </div>
-                      <!-- <div class="level-right">
+<body>
+  <!--
+        <div class="row">
+         <div class="level-right">
                         <div class="level-item">
                           <button type="button" class="button is-small">
                             March 8, 2017 - April 6, 2017
                           </button>
                         </div>
                       </div> -->
-                    </div>
-            
-            
-            {% block content %}{% endblock %}
-                   
-                      </div>
-                    </div>
-            
-                  </main>
-                </div>
-              </div>
-            
+       <!-- </div>
 
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-              <script src="{% static 'student/main.js' %}"></script>
-    {% block javascript %}{% endblock %}
+  -->
+
+  <header>
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+
+              <h4><a class="nav-link">
+                 سامانه رزرو اتاق دفاع
+                <img src="../../static/img/Azad_University_logo.png" style="height: 40px; width: 40px;"> 
+                </a></h4>
+              </div>
+
+          </div>
+      </div>
+  </header>
+  <!-- HEADER END-->
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#5ca9ff !important;"> 
+
+      <div class="d-flex">
+        <div class="dropdown mr-1 ">
+          <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false" data-offset="10,20">
+            وقت بخیر {{ user.get_full_name }}!
+          </button>
+          <div class="dropdown-menu rightToleft" aria-labelledby="dropdownMenuOffset" style=" text-align: right;">
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-user-o"></i> آخرین ورود:</a>
+            <a class="dropdown-item" href="#">{{user.last_login}}</a>
+            <a class="dropdown-item" href="#"> تغییر گذواژه</a>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-power-off"></i> خروج </a>
+          </div>
+        </div>
+      </div>
+      <div class="collapse navbar-collapse rightToleft" id="navbarSupportedContent" style="direction: rtl !important;  text-align: right;">
+          <ul class="navbar-nav ">
+            <li class="nav-item ">
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="{% url 'dashboard' %}">
+                <i class="fa fa-home"></i>صفحه اصلی
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'defense_times' %}">
+                <i class="fa fa-list-alt"></i>زمان‌های قابل رزرو</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'user_requests' %}"> 
+                <i class="fa fa-tasks"></i> درخواست‌‌های من </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">
+                <i class="fa fa-question"></i> راهنما </a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+  <!-- LOGO HEADER END-->
+
+  <div class="content-wrapper">
+      <div class="container col-10" >
+              <div class="title">
+                  {% block heading %}{% endblock heading %}
+              </div>
+              <div >
+                  {% block content %}{% endblock %}
+              </div>
+      </div>
+  </div>  
+
+  <!-- CONTENT-WRAPPER SECTION END-->
+  <footer>
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  &copy; 2018 YourCompany | By : Seyed Ashkan Taravati
+              </div>
+
+          </div>
+      </div>
+  </footer>
+
+
+  <!-- FOOTER SECTION END-->
+  <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+  <!-- CORE JQUERY SCRIPTS -->
+  <script src="assets/js/jquery-1.11.1.js"></script>
+  <!-- BOOTSTRAP SCRIPTS  -->
+  <script src="assets/js/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+  <script src="{% static 'student/main.js' %}"></script>
+  {% block javascript %}{% endblock %}
 </body>
+
 </html>

@@ -2,79 +2,131 @@
 {% block title %}
 زمان‌های موجود برای دفاع
 {% endblock %}
-            {% block content %}
-            <div class="columns is-multiline">
-                    <div class="column">
-                        <button type="submit" class="button" >ثبت</button>
-                        <table class="table is-bordered is-striped is-narrow is-fullwidth has-text-right">
-            <thead>
-            <td>انتخاب</td>
-            <td>کد</td>
-            <td>تاریخ برگزاری</td>
-            <td>روز هفته</td>
-            <td>ساعت شروع</td>
-            <td>ساعت پایان</td>
-            <td>مکان دفاع</td>
-            <td>عملیات</td>
-            </thead>
-            <tbody>
-            {% for defenseTime in defenseTimes %}
-            <tr>
-                <td><input type="checkbox"></input></td>
-                <td>{{defenseTime.id}}</td>
-                <td>{{ defenseTime.occurrence_date }}</td>
-                <td>{{ defenseTime.weekday }}</td>
-                <td>{{ defenseTime.start_time }}</td>
-                <td>{{ defenseTime.end_time }}</td>
-                <td>{{ defenseTime.defense_place }}</td>
-                
-                <td>
-                    <a class="navbar-item" onclick="postReservationRequest(this,'{% url 'submit_reservation' %}');" data-id="{{defenseTime.id}}">
+{% block content %}
+<div class="card card-cascade narrower rtlDirection rtlAlignment" style="border: 2px solid #5ca9ff;">
+        <!--Card image-->
+        <div class="view view-cascade gradient-card-header purple-gradient narrower py-4 mx-4 mb-3 d-flex ">
+            <h4 class="white-text font-weight-bold text-uppercase mb-0 "> زمان‌های موجود</h4>
+        </div>
+        <!--/Card image-->
+        <div class="px-4">
+            <!--Table-->
+            <table class="table table-hover table-responsive table-striped mb-0" >
+                <thead>
+                    <tr>
+                        <th scope="row">#</th>
+                        <th class="th-lg">انتخاب</th>
+                        <th class="th-lg">کد</th>
+                        <th class="th-lg">تاریخ برگزاری</th>
+                        <th class="th-lg">روز هفته</th>
+                        <th class="th-lg">ساعت شروع</th>
+                        <th class="th-lg">ساعت پایان</th>
+                        <th class="th-lg">مکان دفاع</th>
+                        <th class="th-lg">عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        {% for defenseTime in defenseTimes %}
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></input></td>
+                        <td>{{defenseTime.id}}</td>
+                        <td>{{ defenseTime.occurrence_date }}</td>
+                        <td>{{ defenseTime.weekday }}</td>
+                        <td>{{ defenseTime.start_time }}</td>
+                        <td>{{ defenseTime.end_time }}</td>
+                        <td>{{ defenseTime.defense_place }}</td>
+                                                    
+                        <td>
+                        <a class="navbar-item" onclick="postReservationRequest(this,'{% url 'submit_reservation' %}');" data-id="{{defenseTime.id}}">
                         <span class="icon is-small">
                             <i class="fa fa-check"></i>
                         </span>
-                    </a>
-                </td>
-            
-            </tr>
-            {% endfor %}
-        </tbody>
+                        </a>
+                        </td>
+        
+                        </tr>
+                            {% endfor %}
+                </tbody>
             </table>
-            <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-                    <a class="pagination-previous">صفحه‌ی قبلی</a>
-                    <a class="pagination-next">صفحه‌ی بعد</a>
-                    <ul class="pagination-list">
-                      <li><a class="pagination-link" aria-label="Goto page 1">۱</a></li>
-                      <li><span class="pagination-ellipsis">&hellip;</span></li>
-                      <li><a class="pagination-link" aria-label="Goto page 45">۴</a></li>
-                      <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">۵</a></li>
-                      <li><a class="pagination-link" aria-label="Goto page 47">۶</a></li>
-                      <li><span class="pagination-ellipsis">&hellip;</span></li>
-                      <li><a class="pagination-link" aria-label="Goto page 86">۱۰</a></li>
-                    </ul>
-                  </nav>
-            </div>
-            </div>
-            {% endblock %}
+        </div>
+    
+        <hr class="my-0">
+    
+        <!--Bottom Table UI-->
+        <div class="d-flex justify-content-center">
+    
+            <!--Pagination -->
+            <nav class="my-4 pt-2">
+                <ul class="pagination pagination-circle pg-purple mb-0">
+    
+                    <!--First-->
+                    <li class="page-item disabled clearfix d-none d-md-block"><a class="page-link">First</a></li>
+    
+                    <!--Arrow left-->
+                    <li class="page-item disabled">
+                        <a class="page-link" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    </li>
+    
+                    <!--Numbers-->
+                    <li class="page-item active"><a class="page-link">۱</a></li>
+                    <li class="page-item"><a class="page-link">۲</a></li>
+                    <li class="page-item"><a class="page-link">۳</a></li>
+                    <li class="page-item"><a class="page-link">۴</a></li>
+                    <li class="page-item"><a class="page-link">۵</a></li>
+    
+                    <!--Arrow right-->
+                    <li class="page-item">
+                        <a class="page-link" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    </li>
+    
+                    <!--First-->
+                    <li class="page-item clearfix d-none d-md-block"><a class="page-link">Last</a></li>
+    
+                </ul>
+            </nav>
+            <!--/Pagination -->
+    
+        </div>
+        <!--Bottom Table UI-->
+    
+    </div>
 
-            {% block javascript %}
-                <script>
+{% endblock %}
 
-                    function postReservationRequest(sender,endpoint){
-                        let did=$(sender).data('id');
-                        //alert(did);
-                        $.ajax({
-                            url:endpoint,
-                            data:{id:did},
-                            dataType:'JSON',
-                            method:'POST',
-                            success:function(result){
-                                alert(result.msg);
-                            },
-                            error:function(){
-                                alert('error');
-                            }
-                        })
-                        }
-                </script>
-            {% endblock javascript %}
+{% block javascript %}
+    <script>
+
+        function postReservationRequest(sender,endpoint){
+            let did=$(sender).data('id');
+            //alert(did);
+            $.ajax({
+                url:endpoint,
+                data:{id:did},
+                dataType:'JSON',
+                method:'POST',
+                success:function(result){
+                    alert(result.msg);
+                },
+                error:function(){
+                    alert('error');
+                }
+            })
+            }
+    </script>
+{% endblock javascript %}
+

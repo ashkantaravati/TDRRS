@@ -1,37 +1,82 @@
 {% extends "student/dashboard_layout.html" %}
 {% block title %}
-داشبورد
 {% endblock title %}
 
 {% block heading %}
-داشبورد
 {% endblock heading %}
+
 {% block content %}
-<div>
-    <ul>
-        <li>
-            نام: {{user.first_name}}
-        </li>
-        <li>
-            نام خانوادگی: {{user.last_name}}
-        </li>
-        <li>
-            نام پدر:
-        </li>
-        <li>
-            کد ملی:
-        </li>
-        <li>
-            شماره دانشچویی:
-        </li>
-        <li>
-            رشته:
-        </li>
-        <li>
-            نیم‌سال تحصیلی:
-        </li>
-    </ul>
+<!--personal detailes-->
+    <div class="col-12 rtlDirection rtlAlignment table-responsive" style="border: 2px solid #5ca9ff;">
+        <h3>داشبورد</h3>
+        <table class="table table-striped ">
+            <thead>
+                <tr class="filters">
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>نام </th>
+                    <td>{{user.first_name}}
+                        پریسا
+                    </td>
+                    <th>نام خانوادگی</th>
+                    <td>{{user.last_name}}
+                        قمی
+                    </td>
+                    <th>رشته</th>
+                    <td>مهندسی کامپیوتر-نرم افزار</td>
+                    <th>کدملی</th>
+                    <td>0020345771</td>
+                    <th>نام‌پدر</th>
+                    <td>منصور</td>
+                    <th>رشته</th>
+                    <td>@fat</td>
+                    <th>سال تحصیلی</th>
+                    <td>نیمه اول - ۹۴</td>
+                </tr>
 
-</div>
+            </tbody>
+        </table>
+    </div>
 
+<!--/personal detailes-->
+<!--personal requests-->
+<div class="col-12 rtlDirection rtlAlignment table-responsive mt-5" style="border: 2px solid #5ca9ff;">
+        <h3>درخواست‌های من</h3>
+        <table class="table table-striped ">
+            <thead>
+                <tr class="filters">
+                        <th>زمان درخواست شده</th>
+                        <th>تاریخ ثبت درخواست</th>
+                        <th>دانشجوی درخواست‌کننده</th>
+                        <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reservation_request in reservation_requests %}
+                <tr>
+                    <td>{{ reservation_request.requested_defense_time }}</td>
+                    <td>{{ reservation_request.request_date_time }}</td>
+                    <td>{{ reservation_request.requesting_student }}</td>
+                    
+                    <td>
+                        <a class="navbar-item" onclick="postCancelationRequest(this,'{% url 'cancel_reservation' %}');" data-id="{{reservationRequest.id}}">
+                            <span class="icon is-small">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </a>
+                    </td>
+                
+                </tr>
+                
+                {% endfor %}
+            </tbody>
+        </table>
+    </div> <!--script needed-->
+<!--/personal requests-->
 {% endblock content %}
