@@ -8,6 +8,7 @@ from django.template.loader import get_template
 import datetime
 from .models import DefenseTime,ReservationRequest
 from student.forms import myForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # TODO authorization
 def get_dashboard(request):
@@ -16,9 +17,16 @@ def get_dashboard(request):
     else:
         return HttpResponseRedirect('login')
 def get_defense_times(request):
-    defense_times = DefenseTime.objects.all()
-
-    return render(request, 'student/defense_times.html', {'defense_times': defense_times})
+    queried_defense_times = DefenseTime.objects.all()
+    page = request.GET.get('page', 1)
+    paginator = Paginator(queried_defense_times, 5)
+    try:
+        page_defense_times = paginator.page(page)
+    except PageNotAnInteger:
+        page_defense_times = paginator.page(1)
+    except EmptyPage:
+        page_defense_times = paginator.page(paginator.num_pages)
+    return render(request, 'student/defense_times.html', {'defense_times': page_defense_times})
 
 
 def do_logout(request):
