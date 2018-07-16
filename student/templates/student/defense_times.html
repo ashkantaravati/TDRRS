@@ -14,8 +14,7 @@
             <table class="table table-hover table-responsive table-striped mb-0" >
                 <thead>
                     <tr>
-                        <th scope="row">#</th>
-                        <th class="th-lg">انتخاب</th>
+                        <th scope="row">انتخاب</th>
                         <th class="th-lg">کد</th>
                         <th class="th-lg">تاریخ برگزاری</th>
                         <th class="th-lg">روز هفته</th>
@@ -26,27 +25,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                        {% for defenseTime in defenseTimes %}
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                        {% for defense_time in defense_times %}
+                    
                     <tr>
                         <td><input type="checkbox"></input></td>
-                        <td>{{defenseTime.id}}</td>
-                        <td>{{ defenseTime.occurrence_date }}</td>
-                        <td>{{ defenseTime.weekday }}</td>
-                        <td>{{ defenseTime.start_time }}</td>
-                        <td>{{ defenseTime.end_time }}</td>
-                        <td>{{ defenseTime.defense_place }}</td>
+                        <td>{{defense_time.id}}</td>
+                        <td>{{ defense_time.occurrence_date }}</td>
+                        <td>{{ defense_time.weekday }}</td>
+                        <td>{{ defense_time.start_time }}</td>
+                        <td>{{ defense_time.end_time }}</td>
+                        <td>{{ defense_time.defense_place }}</td>
                                                     
                         <td>
-                        <a class="navbar-item" onclick="postReservationRequest(this,'{% url 'submit_reservation' %}');" data-id="{{defenseTime.id}}">
+                        <a class="navbar-item rtlDirection rtlAlignment" onclick="postReservationRequest(this,'{% url 'submit_reservation' %}');" data-id="{{defense_time.id}}">
                         <span class="icon is-small">
                             <i class="fa fa-check"></i>
                         </span>

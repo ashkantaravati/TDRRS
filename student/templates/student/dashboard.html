@@ -22,22 +22,20 @@
                 <tr>
                     <th>نام </th>
                     <td>{{user.first_name}}
-                        پریسا
                     </td>
                     <th>نام خانوادگی</th>
                     <td>{{user.last_name}}
-                        قمی
                     </td>
+                    <th>شماره‌ دانشجویی</th>
+                    <td>{{user.student.student_number}}</td>
                     <th>رشته</th>
-                    <td>مهندسی کامپیوتر-نرم افزار</td>
-                    <th>کدملی</th>
-                    <td>0020345771</td>
-                    <th>نام‌پدر</th>
-                    <td>منصور</td>
-                    <th>رشته</th>
-                    <td>@fat</td>
+                    <td>{{user.student.major}}</td>
+                    <th>کد ملی</th>
+                    <td>{{user.student.national_id}}</td>
+                    <th>نام ‌پدر</th>
+                    <td>{{user.student.father_name}}</td>
                     <th>سال تحصیلی</th>
-                    <td>نیمه اول - ۹۴</td>
+                    <td>تابستان ۹۸-۹۷</td>
                 </tr>
 
             </tbody>
@@ -46,7 +44,7 @@
 
 <!--/personal detailes-->
 <!--personal requests-->
-<div class="col-12 rtlDirection rtlAlignment table-responsive mt-5" style="border: 2px solid #5ca9ff;">
+<div class="col-12 rMultiValueDictKeyErrortlDirection rtlAlignment table-responsive mt-5" style="border: 2px solid #5ca9ff;">
         <h3>درخواست‌های من</h3>
         <table class="table table-striped ">
             <thead>
