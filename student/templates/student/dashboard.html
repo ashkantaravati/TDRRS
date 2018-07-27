@@ -7,8 +7,9 @@
 
 {% block content %}
 <!--personal detailes-->
-    <div class="col-12 rtlDirection rtlAlignment table-responsive" style="border: 2px solid #5ca9ff;">
-        <h3>داشبورد</h3>
+
+    <div class="col-12 rtlDirection text-right table-responsive" style="border: 2px solid #5ca9ff;">
+        <h4>اطلاعات شخصی</h4>
         <table class="table table-striped ">
             <thead>
                 <tr class="filters">
@@ -43,32 +44,68 @@
     </div>
 
 <!--/personal detailes-->
+<!--defense detailes-->
+<div class="col-12 rtlDirection text-right table-responsive mt-3" style="border: 2px solid #5ca9ff;">
+    <h4>اطلاعات پایان‌نامه</h4>
+    <table class="table table-striped ">
+        <thead>
+            <tr class="filters">
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th> موضوع پایان‌نامه </th>
+                <td>{{user.DefenseSession.subject}}
+                </td>
+                <th> مدیر گروه</th>
+                <td> {{user.DefenseSession.dean}}
+                </td>
+                <th>استاد مشاور </th>
+                <td>{{user.DefenseSession.advisor}} </td>
+                <th>استاد راهنما</th>
+                <td>{{user.DefenseSession.supervisor}}</td>
+                <th>داور  </th>
+                <td>{{user.DefenseSession.examiner}}</td>
+                <th>نیمسال تحصیلی</th>
+                <td>{{user.DefenseSession.semester}}</td>
+                <th>تاریخ تصویب </th>
+                <td>{{user.DefenseSession.approval_date}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<!--/defense detailes-->
 <!--personal requests-->
-<div class="col-12 rMultiValueDictKeyErrortlDirection rtlAlignment table-responsive mt-5" style="border: 2px solid #5ca9ff;">
-        <h3>درخواست‌های من</h3>
+<div class="col-12 rMultiValueDictKeyErro rtlDirection text-right table-responsive mt-5" style="border: 2px solid #5ca9ff;">
+        <h4> پیگیری درخواست</h4>
         <table class="table table-striped ">
             <thead>
                 <tr class="filters">
+                    <th>ردیف</th>
+                         <th>دانشجوی درخواست‌کننده</th>
                         <th>زمان درخواست شده</th>
                         <th>تاریخ ثبت درخواست</th>
                         <th>کد رهگیری</th>                        
-                        <th>دانشجوی درخواست‌کننده</th>
                         <th>عملیات</th>
                 </tr>
             </thead>
             <tbody>
                 {% for reservation_request in reservation_requests %}
                 <tr>
+                    <td>1</td>
+                    <td>{{ reservation_request.requesting_student }}</td>
                     <td>{{ reservation_request.requested_defense_time }}</td>
                     <td>{{ reservation_request.request_date_time }}</td>
                     <td>13243153A14B</td>
-                    <td>{{ reservation_request.requesting_student }}</td>
                     
                     <td>
-                        <a class="navbar-item" onclick="postCancelationRequest(this,'{% url 'cancel_reservation' %}');" data-id="{{reservationRequest.id}}">
-                            <span class="icon is-small">
-                                <i class="fa fa-check"></i>
-                            </span>
+                        <a class="" onclick="postCancelationRequest(this,'{% url 'cancel_reservation' %}');" href="#" data-id="{{reservationRequest.id}}">
+                                <i class="fa fa-trash 3x"></i>
                         </a>
                     </td>
                 
@@ -77,6 +114,7 @@
                 {% endfor %}
             </tbody>
         </table>
-    </div> <!--script needed-->
+    </div>
+ <!--script needed-->
 <!--/personal requests-->
 {% endblock content %}
