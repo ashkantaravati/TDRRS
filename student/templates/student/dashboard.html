@@ -35,8 +35,6 @@
                     <td>{{user.student.national_id}}</td>
                     <th>نام ‌پدر</th>
                     <td>{{user.student.father_name}}</td>
-                    <th>سال تحصیلی</th>
-                    <td>تابستان ۹۸-۹۷</td>
                 </tr>
 
             </tbody>
@@ -59,21 +57,21 @@
         <tbody>
             <tr>
                 <th> موضوع پایان‌نامه </th>
-                <td>{{user.DefenseSession.subject}}
+                <td>{{current_defense.subject}}
                 </td>
                 <th> مدیر گروه</th>
-                <td> {{user.DefenseSession.dean}}
+                <td> {{current_defense.dean}}
                 </td>
                 <th>استاد مشاور </th>
-                <td>{{user.DefenseSession.advisor}} </td>
+                <td>{{current_defense.advisor}} </td>
                 <th>استاد راهنما</th>
-                <td>{{user.DefenseSession.supervisor}}</td>
+                <td>{{current_defense.supervisor}}</td>
                 <th>داور  </th>
-                <td>{{user.DefenseSession.examiner}}</td>
+                <td>{{current_defense.examiner}}</td>
                 <th>نیمسال تحصیلی</th>
-                <td>{{user.DefenseSession.semester}}</td>
+                <td>{{current_defense.semester}}</td>
                 <th>تاریخ تصویب </th>
-                <td>{{user.DefenseSession.approval_date}}</td>
+                <td>{{current_defense.approval_date}}</td>
             </tr>
 
         </tbody>
@@ -101,7 +99,7 @@
                     <td>{{ reservation_request.requesting_student }}</td>
                     <td>{{ reservation_request.requested_defense_time }}</td>
                     <td>{{ reservation_request.request_date_time }}</td>
-                    <td>13243153A14B</td>
+                    <td>{{ reservation_request.tracing_code }}</td>
                     
                     <td>
                         <a class="" onclick="postCancelationRequest(this,'{% url 'cancel_reservation' %}');" href="#" data-id="{{reservationRequest.id}}">

@@ -5,7 +5,7 @@ from django_jalali.db import models as jmodels
 SEMESTER_CHOICES=[(1,u'پاییز') , (2,u'بهار') , (3,u'تابستان')]
 DEGREE_CHOICES=[(1,u'کارشناسی ارشد') , (2,u'دکتری')]
 DEFENSE_TIME_STATUS_CHOICES=[(0,u'اختصاص داده شده') , (1,u'آزاد')]
-RESERVATION_REQUEST_STATUS_CHOICES=[(0,u'انجام شد') , (1,u'لغو از طرف دانشجو'),(2,u'لغو از طرف دانشگاه')]
+RESERVATION_REQUEST_STATUS_CHOICES=[(0,u'ثبت شد') , (1,u'لغو از طرف دانشجو'),(2,u'لغو از طرف دانشگاه')]
 PROFESSOR_RANK_STATUS_CHOICES=[(1,u'مربی') , (2,u'استادیار'),(3,u'دانشیار'),(4,u'استاد تمام')]
 # Weekday 
 PERSIAN_WEEKDAY={'0':u'شنبه','1':u'یکشبنه','2':u'دوشنبه','3':u'سه‌شنبه','4':u'چهارشنبه','5':u'پنجشنبه','6':u'جمعه'}
@@ -106,6 +106,7 @@ class DefenseSession(models.Model):
     student=models.ForeignKey('Student',verbose_name='دانشجو')
     semester=models.ForeignKey('Semester',verbose_name='نیمسال')
     approval_date=jmodels.jDateField(verbose_name='تاریخ تصویب')
+    is_archived=models.BooleanField(verbose_name='بایگانی شده است؟')
     class Meta:
         verbose_name=u'جلسه دفاع مصوب شورا'
         verbose_name_plural=u'جلسات دفاع مصوب شورا' 

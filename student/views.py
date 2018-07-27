@@ -6,15 +6,23 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponse,HttpResponseRedirect,JsonResponse
 from django.template.loader import get_template
 import datetime
-from .models import DefenseTime,ReservationRequest
+from .models import DefenseTime,ReservationRequest,DefenseSession
 from student.forms import myForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.utils.crypto import get_random_string
 
 # TODO authorization
 def get_dashboard(request):
-    if request.user.is_authenticated:
-        reservation_requests=ReservationRequest.objects.all()
-        return render(request, 'student/dashboard.html',{'reservation_requests': reservation_requests})
+    current_user=request.user
+    if current_user.is_authenticated:
+        current_student=current_user.student
+        reservation_requests=ReservationRequest.objects.filter(requesting_student=current_student)
+        current_defense=current_student.defensesession_set.get(is_archived=False)
+        current_context={
+            'reservation_requests': reservation_requests,
+            'current_defense':current_defense
+        }
+        return render(request, 'student/dashboard.html',current_context)
     else:
         return HttpResponseRedirect('login')
 def get_defense_times(request):
@@ -67,7 +75,10 @@ def do_submit_reservation(request):
             reservereq=ReservationRequest.objects.create(
                 requested_defense_time=defense_time,
                 request_date_time=datetime.datetime.now(),
-                requesting_student=request.user.student)
+                requesting_student=request.user.student,
+                tracing_code=get_random_string(length=12),
+                status=0,
+                )
             result['msg']='درخواست شما: {} با موفقیت ثبت شد'.format(str(defense_time))
         except Exception as err:
             result['msg']='خطا {}'.format(err)
