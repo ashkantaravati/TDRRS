@@ -64,10 +64,10 @@ class Student(models.Model):
     def get_info_from_user(self):
         return u"{} {}".format(self.user_account.first_name,self.user_account.last_name)
     @property
-    def get_info_from_self(self):
+    def info_from_self(self):
         return u"{} {}".format(self.first_name,self.last_name)
     def __str__(self):
-        return u"{} دانشجوی {} رشته‌ی {}".format(self.get_info_from_self,self.get_degree_display(),self.major)
+        return u"{} دانشجوی {} رشته‌ی {}".format(self.info_from_self,self.get_degree_display(),self.major)
 
 class ReservationRequest(models.Model):
     requested_defense_time=models.ForeignKey('DefenseTime',verbose_name='زمان درخواستی')
@@ -120,3 +120,12 @@ class DefenseSession(models.Model):
         verbose_name_plural=u'جلسات دفاع مصوب شورا' 
     def __str__(self):
         return u"{} توسط {} مصوب {}".format(self.subject,self.student,str(self.approval_date))
+    @property
+    def info(self):
+        txt='دانشجو: {}،استاد راهنما: {}،استاد مشاور: {}،استاد داور: {}'
+        advisor_name=self.advisor.name if self.advisor!=None else 'ندارد'
+        processed_txt=txt.format(self.student.info_from_self,self.supervisor.name,advisor_name,self.examiner.name)
+        return processed_txt
+    @property
+    def major(self):
+        return self.student.major
