@@ -47,30 +47,35 @@
     <h4>اطلاعات پایان‌نامه</h4>
     <table class="table table-striped ">
         <thead>
-            <tr class="filters">
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
+            <tr class="filters text-center">
+                <th> موضوع پایان‌نامه </th>
+                <th> مدیر گروه</th>
+                <th>استاد مشاور </th>
+                <th>استاد راهنما</th>
+                <th>داور  </th>
+                <th>نیمسال تحصیلی</th>
+                <th>تاریخ تصویب </th>
+               
             </tr>
         </thead>
         <tbody>
             <tr>
-                <th> موضوع پایان‌نامه </th>
                 <td>{{current_defense.subject}}
                 </td>
-                <th> مدیر گروه</th>
                 <td> {{current_defense.dean}}
                 </td>
-                <th>استاد مشاور </th>
-                <td>{{current_defense.advisor}} </td>
-                <th>استاد راهنما</th>
+                <td>
+                    {% if current_defense.advisor%}
+                        {{current_defense.advisor}} 
+
+                    {% else %}
+                        ندارد
+                    {% endif %}
+                
+                </td>
                 <td>{{current_defense.supervisor}}</td>
-                <th>داور  </th>
                 <td>{{current_defense.examiner}}</td>
-                <th>نیمسال تحصیلی</th>
                 <td>{{current_defense.semester}}</td>
-                <th>تاریخ تصویب </th>
                 <td>{{current_defense.approval_date}}</td>
             </tr>
 

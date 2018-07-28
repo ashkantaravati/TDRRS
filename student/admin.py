@@ -22,3 +22,6 @@ admin.site.register(models.Student)
 admin.site.register(models.ReservationRequest)
 admin.site.register(models.DefenseSession)
 admin.site.register(models.Professor)
+admin.site.site_header='پنل مدیریت سامانه‌ی برنامه‌ریزی اتاق دفاع'
+admin.site.site_title='پنل مدیریت سامانه‌ی برنامه‌ریزی اتاق دفاع'
+admin.site.index_title='داشبورد مدیریت'
