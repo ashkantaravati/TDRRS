@@ -5,7 +5,7 @@ from django_jalali.db import models as jmodels
 SEMESTER_CHOICES=[(1,u'پاییز') , (2,u'بهار') , (3,u'تابستان')]
 DEGREE_CHOICES=[(1,u'کارشناسی ارشد') , (2,u'دکتری')]
 DEFENSE_TIME_STATUS_CHOICES=[(0,u'اختصاص داده شده') , (1,u'آزاد')]
-RESERVATION_REQUEST_STATUS_CHOICES=[(0,u'انجام شد') , (1,u'لغو از طرف دانشجو'),(2,u'لغو از طرف دانشگاه')]
+RESERVATION_REQUEST_STATUS_CHOICES=[(0,u'ثبت شد') , (1,u'لغو از طرف دانشجو'),(2,u'لغو از طرف دانشگاه')]
 PROFESSOR_RANK_STATUS_CHOICES=[(1,u'مربی') , (2,u'استادیار'),(3,u'دانشیار'),(4,u'استاد تمام')]
 # Weekday 
 PERSIAN_WEEKDAY={'0':u'شنبه','1':u'یکشبنه','2':u'دوشنبه','3':u'سه‌شنبه','4':u'چهارشنبه','5':u'پنجشنبه','6':u'جمعه'}
@@ -49,6 +49,8 @@ class DefenseTime(models.Model):
         return u"روز{} از {} تا{}".format(str(self.occurrence_date),self.start_time,self.end_time)
 
 class Student(models.Model):
+    first_name=models.CharField(verbose_name='نام',max_length=30)
+    last_name=models.CharField(verbose_name='نام خانوادگی',max_length=30)
     student_number=models.CharField(max_length=12,verbose_name='شماره دانشجویی')
     major=models.ForeignKey('Major',verbose_name='رشته‌ی تحصیلی')
     degree=models.IntegerField(choices=DEGREE_CHOICES,verbose_name='مقطع تحصیلی')
@@ -61,8 +63,11 @@ class Student(models.Model):
         verbose_name_plural=u'دانشجویان'  
     def get_info_from_user(self):
         return u"{} {}".format(self.user_account.first_name,self.user_account.last_name)
+    @property
+    def get_info_from_self(self):
+        return u"{} {}".format(self.first_name,self.last_name)
     def __str__(self):
-        return u"{} دانشجوی {} رشته‌ی {}".format(self.get_info_from_user(),self.get_degree_display(),self.major)
+        return u"{} دانشجوی {} رشته‌ی {}".format(self.get_info_from_self,self.get_degree_display(),self.major)
 
 class ReservationRequest(models.Model):
     requested_defense_time=models.ForeignKey('DefenseTime',verbose_name='زمان درخواستی')
@@ -73,7 +78,9 @@ class ReservationRequest(models.Model):
     class Meta:
         verbose_name=u'درخواست رزرو'
         verbose_name_plural=u'درخواست‌های رزرو' 
-    #def __str__(self):
+    def __str__(self):
+        rep=u'{} توسط {} در تاریخ {}'
+        return rep.format(self.requested_defense_time,self.requesting_student,str(self.request_date_time))
 
 class Major(models.Model):
     major_name=models.CharField(max_length=100,verbose_name='نام رشته')
@@ -106,6 +113,8 @@ class DefenseSession(models.Model):
     student=models.ForeignKey('Student',verbose_name='دانشجو')
     semester=models.ForeignKey('Semester',verbose_name='نیمسال')
     approval_date=jmodels.jDateField(verbose_name='تاریخ تصویب')
+    is_archived=models.BooleanField(verbose_name='بایگانی شده است؟')
+    designated_defense_time=models.OneToOneField('DefenseTime', null=True,verbose_name='تاریخ و زمان اختصاص یافته برای دفاع')
     class Meta:
         verbose_name=u'جلسه دفاع مصوب شورا'
         verbose_name_plural=u'جلسات دفاع مصوب شورا' 
