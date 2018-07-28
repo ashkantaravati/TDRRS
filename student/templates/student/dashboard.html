@@ -22,10 +22,10 @@
             <tbody>
                 <tr>
                     <th>نام </th>
-                    <td>{{user.first_name}}
+                    <td>{{user.student.first_name}}
                     </td>
                     <th>نام خانوادگی</th>
-                    <td>{{user.last_name}}
+                    <td>{{user.student.last_name}}
                     </td>
                     <th>شماره‌ دانشجویی</th>
                     <td>{{user.student.student_number}}</td>
@@ -90,21 +90,21 @@
             <thead>
                 <tr class="filters">
                     <th>ردیف</th>
-                         <th>دانشجوی درخواست‌کننده</th>
-                        <th>زمان درخواست شده</th>
-                        <th>تاریخ ثبت درخواست</th>
-                        <th>کد رهگیری</th>                        
-                        <th>عملیات</th>
+                    <th>زمان درخواست شده</th>
+                    <th>تاریخ ثبت درخواست</th>
+                    <th>کد رهگیری</th>                        
+                    <th>وضعیت</th>
+                    <th>عملیات</th>
                 </tr>
             </thead>
             <tbody>
                 {% for reservation_request in reservation_requests %}
                 <tr>
                     <td>1</td>
-                    <td>{{ reservation_request.requesting_student }}</td>
                     <td>{{ reservation_request.requested_defense_time }}</td>
                     <td>{{ reservation_request.request_date_time }}</td>
                     <td>{{ reservation_request.tracing_code }}</td>
+                    <td>{{ reservation_request.get_status_display }}</td>
                     
                     <td>
                         <a class="" onclick="postCancelationRequest(this,'{% url 'cancel_reservation' %}');" href="#" data-id="{{reservationRequest.id}}">

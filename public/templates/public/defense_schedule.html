@@ -25,15 +25,17 @@
                     </tr>
                 </thead>
                 <tbody>
+                  {% for schedule in schedules %}
                   
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                  <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{schedule.designated_defense_time}}</td>
+                      <td>{{schedule.designated_defense_time.defense_place}}</td>
+                      <td>{{schedule.subject}}</td>
+                      <td>{{schedule.major}}</td>
+                      <td>{{schedule.info}}</td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
