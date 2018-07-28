@@ -1,14 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>سامانه رزرواسیون</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/student/style.css">
+    <link rel="stylesheet" href="../../static/student/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.rawgit.com/rastikerdar/vazir-font/v18.0.1/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <style>
+        .fp-icon{
+            color: #6590f9 !important;                 
+        }
+    </style>
 </head>
+
 <body>
-    <h1>سامانه رزرواسیون</h1>
-<a href="{% url 'login' %}">ورود به سامانه</a>
-    
+
+    <body style="background-color:	#6590f9;">
+        <div class="container rounded mt-5 ">
+            <div class="card card-container text-center">
+                <div class="">
+                    <img class="my-4 " src="../../static/img/Azad_University_logo.png" alt="" style="height:200px; width:150px;">
+                    <h4 id="profile-name" class="profile-name-card rtlDirection mb-1"> سامانه رزرواسیون اتاق دفاع </h4>
+                    <h5>مجتمع دانشگاهی آیت‌الله هاشمی رفسنجانی </h5>
+                </div>
+                <div class="container ">
+                    <div class=" row">
+                        <div class="col-lg-4 ">
+                            <i class="fa fa-calendar-alt fa-5x fp-icon my-4"></i>
+                        </br>
+                            <p>
+                                <a class="btn btn-outline-primary" href="{% url 'defense_schedule' %}" role="button">جدول زمانبندی</a>
+                            </p>
+                        </div>
+                        <div class="col-lg-4">
+                                <i class="fa fa-user-alt fa-5x fp-icon my-4"></i>
+                            </br>
+                            <p>
+                                <a class="btn btn-outline-primary" href="/admin" role="button">ورود پرسنل</a>
+                            </p>
+                        </div>
+                        <div class="col-lg-4">
+                                <i class="fa fa-user-graduate fa-5x fp-icon my-4"></i>
+                            </br>
+                            <p>
+                                <a class="btn btn-outline-primary" href="{% url 'dashboard' %}" role="button">ورود دانشجو</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /card-container -->
+        </div>
+        <!-- /container -->
+    </body>
 </body>
+
 </html>

@@ -1,0 +1,88 @@
+{% extends "public/public_layout.html" %}
+{% block title %}
+برنامه جلسات دفاع
+{% endblock title %}
+
+{% block content %}
+
+    <div class="card card-cascade narrower rtlDirection text-right" style="border: 2px solid #5ca9ff;">
+        <!--Card image-->
+        <div class="view view-cascade gradient-card-header purple-gradient narrower py-4 mx-4 mb-3 d-flex ">
+            <h4 class="white-text font-weight-bold text-uppercase mb-0 "> برنامه جلسات دفاع </h4>
+        </div>
+        <!--/Card image-->
+        <div class="px-4">
+            <!--Table-->
+            <table class="table table-hover table-responsive table-striped mb-0" >
+                <thead>
+                    <tr>
+                        <th scope="row">ردیف</th>
+                        <th class="th-lg">زمان</th>
+                        <th class="th-lg"> مکان</th>
+                        <th class="th-lg"> موضوع</th>
+                        <th class="th-lg">رشته</th>
+                        <th class="th-lg">توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+        <hr class="my-0">
+    
+        <!--Bottom Table UI-->
+        <div class="d-flex justify-content-center">
+    
+            <!--Pagination -->
+            <nav class="my-4 pt-2">
+                <ul class="pagination pagination-circle pg-purple mb-0">
+    
+                    <!--First-->
+                    <li class="page-item disabled clearfix d-none d-md-block"><a class="page-link">صفحه‌ی اول</a></li>
+    
+                    <!--Arrow left-->
+                    <li class="page-item disabled">
+                        <a class="page-link" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">صفحه‌ی قبل</span>
+                    </a>
+                    </li>
+    
+                    <!--Numbers-->
+                    <li class="page-item active"><a class="page-link">۱</a></li>
+                    <li class="page-item"><a class="page-link">۲</a></li>
+                    <li class="page-item"><a class="page-link">۳</a></li>
+                    <li class="page-item"><a class="page-link">۴</a></li>
+                    <li class="page-item"><a class="page-link">۵</a></li>
+    
+                    <!--Arrow right-->
+                    <li class="page-item">
+                        <a class="page-link" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">صفحه‌ی بعد</span>
+                    </a>
+                    </li>
+    
+                    <!--First-->
+                    <li class="page-item clearfix d-none d-md-block"><a class="page-link">آخرین صفحه</a></li>
+    
+                </ul>
+            </nav>
+            <!--/Pagination -->
+    
+        </div>
+        <!--Bottom Table UI-->
+    
+    </div>
+              
+{% endblock %}
