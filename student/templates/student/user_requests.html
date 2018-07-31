@@ -22,12 +22,9 @@
                 <td>{{ reservation_request.requested_defense_time }}</td>
                 <td>{{ reservation_request.request_date_time }}</td>
                 <td>{{ reservation_request.requesting_student }}</td>
-                
                 <td>
-                    <a class="navbar-item" onclick="postCancelationRequest(this,'{% url 'cancel_reservation' %}');" data-id="{{reservationRequest.id}}">
-                        <span class="icon is-small">
+                    <a  onclick="postCancelationRequest(this,'{% url 'cancel_reservation' %}');" data-id="{{reservationRequest.id}}">
                             <i class="fa fa-check"></i>
-                        </span>
                     </a>
                 </td>
             </tr>
