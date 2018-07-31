@@ -32,21 +32,8 @@
 </head>
 
 <body>
-  <!--
-        <div class="row">
-         <div class="level-right">
-                        <div class="level-item">
-                          <button type="button" class="button is-small">
-                            March 8, 2017 - April 6, 2017
-                          </button>
-                        </div>
-                      </div> -->
-       <!-- </div>
-
-  -->
-
   <header>
-      <div class="container">
+      <div  style="margin-right: 2rem;">
           <div class="row">
               <div class="col-md-12">
 
@@ -60,40 +47,39 @@
       </div>
   </header>
   <!-- HEADER END-->
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#5ca9ff !important;"> 
-
-      <div class="d-flex">
-        <div class="dropdown mr-1 ">
+  <nav class="navbar navbar-expand-lg navbar-light row-blue-bg" > 
+      <div class="d-flex ml-4 rtlDirection" >
+        <div class="dropdown mr-1 " >
           <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false" data-offset="10,20">
-            !  وقت بخیر{{ user.student.info_from_self }} 
+            aria-expanded="false" data-offset="10,20" style="background-color: #3b8baf;">
+            وقت بخیر{{ user.student.info_from_self }}! 
           </button>
-          <div class="dropdown-menu rightToleft text-right" aria-labelledby="dropdownMenuOffset" >
-            <a class="dropdown-item" href="#">
+          <div class="dropdown-menu text-right" aria-labelledby="dropdownMenuOffset" >
+            <a class="dropdown-item">
               <i class="fa fa-user-o"></i> آخرین ورود:</a>
-            <a class="dropdown-item" href="#">{{user.last_login}}</a>
+            <a class="dropdown-item">{{user.last_login}}</a>
             <a class="dropdown-item" href="#"> تغییر گذواژه</a>
             <a class="dropdown-item" href="#">
               <i class="fa fa-power-off"></i> خروج </a>
           </div>
         </div>
       </div>
-      <div class="collapse navbar-collapse rightToleft text-right" id="navbarSupportedContent" style="direction: rtl !important; ">
+      <div class="collapse navbar-collapse rtlDirection text-right" id="navbarSupportedContent" >
           <ul class="navbar-nav ">
             <li class="nav-item ">
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="{% url 'dashboard' %}">
-                <i class="fa fa-home"></i>صفحه اصلی
+                <i class="fa fa-home pl-1"></i>صفحه اصلی
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'defense_times' %}">
-                <i class="fa fa-list-alt"></i>زمان‌های قابل رزرو</a>
+                <i class="fa fa-list-alt pl-1"></i>زمان‌های قابل رزرو</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'user_requests' %}"> 
-                <i class="fa fa-tasks"></i>  پیگیری درخواست </a>
+                <i class="fa fa-tasks pl-1"></i>  پیگیری درخواست </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="">
@@ -117,7 +103,7 @@
 
   <!-- CONTENT-WRAPPER SECTION END-->
   <footer>
-      <div class="container">
+      <div style="margin-left: 2rem;">
           <div class="row">
               <div class="col-md-12">
                   دانشگاه آزاد اسلامی واحد تهران مرکزی | توسعه یافته توسط گروه مهندسی کامپیوتر

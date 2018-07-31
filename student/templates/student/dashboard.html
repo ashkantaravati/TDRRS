@@ -8,32 +8,28 @@
 {% block content %}
 <!--personal detailes-->
 
-    <div class="col-12 rtlDirection text-right table-responsive" style="border: 2px solid #5ca9ff;">
-        <h4>اطلاعات شخصی</h4>
-        <table class="table table-striped ">
-            <thead>
+    <div class="col-12 rtlDirection text-right table-responsive blue-border"  >
+        <h4 class="m-2 ">اطلاعات شخصی</h4>
+        <table class="table">
+            <thead class=" row-blue-bg">
                 <tr class="filters">
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th>نام</th>
+                    <th>نام خانوادگی</th>
+                    <th>شماره‌ دانشجویی</th>
+                    <th>رشته</th>
+                    <th>کد ملی</th>
+                    <th>نام ‌پدر</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
                 <tr>
-                    <th>نام </th>
                     <td>{{user.student.first_name}}
                     </td>
-                    <th>نام خانوادگی</th>
                     <td>{{user.student.last_name}}
                     </td>
-                    <th>شماره‌ دانشجویی</th>
                     <td>{{user.student.student_number}}</td>
-                    <th>رشته</th>
                     <td>{{user.student.major}}</td>
-                    <th>کد ملی</th>
                     <td>{{user.student.national_id}}</td>
-                    <th>نام ‌پدر</th>
                     <td>{{user.student.father_name}}</td>
                 </tr>
 
@@ -43,11 +39,11 @@
 
 <!--/personal detailes-->
 <!--defense detailes-->
-<div class="col-12 rtlDirection text-right table-responsive mt-3" style="border: 2px solid #5ca9ff;">
-    <h4>اطلاعات پایان‌نامه</h4>
-    <table class="table table-striped ">
-        <thead>
-            <tr class="filters text-center">
+<div class="col-12 rtlDirection text-right table-responsive mt-5 blue-border"  >
+    <h4 class="m-2 ">اطلاعات پایان‌نامه</h4>
+    <table class="table  ">
+        <thead class="row-blue-bg">
+            <tr class="filters">
                 <th> موضوع پایان‌نامه </th>
                 <th> مدیر گروه</th>
                 <th>استاد مشاور </th>
@@ -55,7 +51,6 @@
                 <th>داور  </th>
                 <th>نیمسال تحصیلی</th>
                 <th>تاریخ تصویب </th>
-               
             </tr>
         </thead>
         <tbody>
@@ -84,12 +79,11 @@
 </div>
 <!--/defense detailes-->
 <!--personal requests-->
-<div class="col-12 rMultiValueDictKeyErro rtlDirection text-right table-responsive mt-5" style="border: 2px solid #5ca9ff;">
-        <h4> پیگیری درخواست</h4>
-        <table class="table table-striped ">
-            <thead>
+<div class="col-12 rMultiValueDictKeyErro rtlDirection text-right table-responsive mt-5 blue-border"  >
+        <h4 class="m-2 "> پیگیری درخواست</h4>
+        <table class="table ">
+            <thead class="row-blue-bg">
                 <tr class="filters">
-                    <th>ردیف</th>
                     <th>زمان درخواست شده</th>
                     <th>تاریخ ثبت درخواست</th>
                     <th>کد رهگیری</th>                        
@@ -100,7 +94,6 @@
             <tbody>
                 {% for reservation_request in reservation_requests %}
                 <tr>
-                    <td>1</td>
                     <td>{{ reservation_request.requested_defense_time }}</td>
                     <td>{{ reservation_request.request_date_time }}</td>
                     <td>{{ reservation_request.tracing_code }}</td>
@@ -108,7 +101,7 @@
                     
                     <td>
                         <a class="" onclick="postCancelationRequest(this,'{% url 'cancel_reservation' %}');" href="#" data-id="{{reservationRequest.id}}">
-                                <i class="fa fa-trash 3x"></i>
+                                <i class="fa fa-trash 4x"></i>
                         </a>
                     </td>
                 

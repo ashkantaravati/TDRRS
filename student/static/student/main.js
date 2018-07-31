@@ -38,7 +38,6 @@ let updatePage = function( resp ) {
  ) 
  
  
- 
  function doAjax(){
      let myfname=$('#id_firstName').val();
       // Create an object to describe the AJAX request
@@ -52,3 +51,4 @@ let updatePage = function( resp ) {
       };
      $.ajax(ajaxOptions);
     }
+//js for nav in responsive mode
