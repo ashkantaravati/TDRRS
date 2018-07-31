@@ -5,23 +5,18 @@
 
 {% block content %}
 
-    <div class="card card-cascade narrower rtlDirection text-right" style="border: 2px solid #5ca9ff;">
-        <!--Card image-->
-        <div class="view view-cascade gradient-card-header purple-gradient narrower py-4 mx-4 mb-3 d-flex ">
-            <h4 class="white-text font-weight-bold text-uppercase mb-0 "> برنامه جلسات دفاع </h4>
-        </div>
-        <!--/Card image-->
-        <div class="px-4">
-            <!--Table-->
-            <table class="table table-hover table-responsive table-striped mb-0" >
-                <thead>
-                    <tr>
-                        <th scope="row">ردیف</th>
-                        <th class="th-lg">زمان</th>
-                        <th class="th-lg"> مکان</th>
-                        <th class="th-lg"> موضوع</th>
-                        <th class="th-lg">رشته</th>
-                        <th class="th-lg">توضیحات</th>
+    <div class="col-12 table-responsive rtlDirection text-right blue-border">
+     <h4 class="m-2 "> برنامه جلسات دفاع </h4>
+
+            <table class="table table-hover " >
+                <thead class=" row-blue-bg">
+                    <tr class="filters">
+                        <th >ردیف</th>
+                        <th >زمان</th>
+                        <th > مکان</th>
+                        <th > موضوع</th>
+                        <th >رشته</th>
+                        <th >توضیحات</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,12 +33,12 @@
                     {% endfor %}
                 </tbody>
             </table>
-        </div>
+
     
         <hr class="my-0">
     
-        <!--Bottom Table UI-->
-        <div class="d-flex justify-content-center">
+    <!--Bottom Table UI-->
+    <div class="d-flex justify-content-center">
     
             <!--Pagination -->
             <nav class="my-4 pt-2">
@@ -86,5 +81,5 @@
         <!--Bottom Table UI-->
     
     </div>
-              
+
 {% endblock %}
