@@ -3,25 +3,20 @@
 زمان‌های موجود برای دفاع
 {% endblock %}
 {% block content %}
-<div class="card card-cascade narrower rtlDirection rtlAlignment" style="border: 2px solid #5ca9ff;">
-        <!--Card image-->
-        <div class="view view-cascade gradient-card-header purple-gradient narrower py-4 mx-4 mb-3 d-flex ">
-            <h4 class="white-text font-weight-bold text-uppercase mb-0 "> زمان‌های موجود</h4>
-        </div>
-        <!--/Card image-->
-        <div class="px-4">
-            <!--Table-->
-            <table class="table table-hover table-responsive table-striped mb-0" >
-                <thead>
-                    <tr>
-                        <th scope="row">انتخاب</th>
-                        <th class="th-lg">کد</th>
-                        <th class="th-lg">تاریخ برگزاری</th>
-                        <th class="th-lg">روز هفته</th>
-                        <th class="th-lg">ساعت شروع</th>
-                        <th class="th-lg">ساعت پایان</th>
-                        <th class="th-lg">مکان دفاع</th>
-                        <th class="th-lg">عملیات</th>
+<div class="col-12 table-responsive rtlDirection text-right blue-border">
+    <h4 class="m-2"> زمان‌های موجود</h4>
+
+            <table class="table table-hover" >
+                <thead class=" row-blue-bg">
+                    <tr class="filters">
+                        <th>انتخاب</th>
+                        <th>کد</th>
+                        <th>تاریخ برگزاری</th>
+                        <th>روز هفته</th>
+                        <th>ساعت شروع</th>
+                        <th>ساعت پایان</th>
+                        <th>مکان دفاع</th>
+                        <th>عملیات</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,10 +32,8 @@
                         <td>{{ defense_time.defense_place }}</td>
                                                     
                         <td>
-                        <a class="navbar-item rtlDirection rtlAlignment" onclick="postReservationRequest(this,'{% url 'submit_reservation' %}');" data-id="{{defense_time.id}}">
-                        <span class="icon is-small">
+                        <a  onclick="postReservationRequest(this,'{% url 'submit_reservation' %}');" data-id="{{defense_time.id}}">
                             <i class="fa fa-check"></i>
-                        </span>
                         </a>
                         </td>
         
@@ -48,7 +41,6 @@
                             {% endfor %}
                 </tbody>
             </table>
-        </div>
     
         <hr class="my-0">
     
