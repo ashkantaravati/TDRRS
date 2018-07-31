@@ -15,35 +15,34 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 
     <style>
-        
+
     </style>
   </head>
 
-  <body style="background-color:	#6590f9;">
-    <div class="container rounded mt-5 ">
-        <div class="card card-container ">
+  <body  style="background-color:	#6590f9;">
+    <div class="container rounded mt-5 text-center" style="width: 30%;">
+        <div class="card card-container">
           <div class="text-center">
-              <img class="my-4 text-center" src="../../static/img/Azad_University_logo.png" alt="" style="height:200px; width:150px;">
+              <img class="my-4 text-center" src="../../static/img/Azad_University_logo.png" alt="" style="height:180px; width:130px;">
               <h4 id="profile-name" class="profile-name-card">  به سامانه رزرواسیون اتاق دفاع خوش آمدید </h4>
           </div>
-          <form class="form-signin px-5" action="{% url 'login' %}" method="post">
+          <form class="form-signin px-5 " action="{% url 'login' %}" method="post">
               {% csrf_token %}
             <div class="text-right rtlDirection">
               <label class="mt-1" for="inputَUserName" > نام کاربری</label>
-                <input type="username" id="inputEmail" name="username" class="form-control text-right" placeholder="نام کاربری" required autofocus>
+                <input class="form-control text-right"  type="username" id="inputEmail" name="username" placeholder="نام کاربری" required autofocus>
               <label class="mt-1" for="inputَPassword" >گذرواژه</label>
-                <input type="password" id="inputPassword" name="password" class="form-control text-right" placeholder="گذرواژه" required>
+                <input class="form-control text-right" type="password" id="inputPassword" name="password" placeholder="گذرواژه" required>
               <div class="checkbox mt-2 text-right">
                 <label>
                     مرا به خاطر بسپار
                     <input class="mt-1" type="checkbox" value="remember-me"> 
                 </label>
               </div>
-              <div class="mb-3">
+              <div>
                   <button class="btn btn-lg btn-primary btn-block" type="submit">ورود به سامانه</button>
-                  <button class="btn btn-lg btn-primary btn-block" type="submit"> ورود اساتید</button>
               </div >
-              <div class="mb-3">
+              <div class="my-3 text-center">
                   <a href="../">بازیابی گذرواژه</a> &nbsp;·&nbsp;
                   <a href="../">راهنمای سامانه</a>
               </div>
