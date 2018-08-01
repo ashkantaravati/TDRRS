@@ -28,7 +28,7 @@ def get_dashboard(request):
 def get_defense_times(request):
     queried_defense_times = DefenseTime.objects.all()
     page = request.GET.get('page', 1)
-    paginator = Paginator(queried_defense_times, 5)
+    paginator = Paginator(queried_defense_times, 3)
     try:
         page_defense_times = paginator.page(page)
     except PageNotAnInteger:

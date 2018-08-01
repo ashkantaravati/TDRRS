@@ -33,11 +33,11 @@
 
 <body>
   <header>
-      <div  style="margin-right: 2rem;">
-          <div class="row">
+      <div >
+          <div class="row mrl-0">
               <div class="col-md-12">
 
-              <h4><a class="nav-link">
+              <h4><a class="nav-link mr-3">
                  سامانه رزرو اتاق دفاع
                 <img src="../../static/img/Azad_University_logo.png" style="height: 40px; width: 40px;"> 
                 </a></h4>
@@ -59,7 +59,7 @@
               <i class="fa fa-user-o"></i> آخرین ورود:</a>
             <a class="dropdown-item">{{user.last_login}}</a>
             <a class="dropdown-item" href="#"> تغییر گذواژه</a>
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="{% url 'logout' %}">
               <i class="fa fa-power-off"></i> خروج </a>
           </div>
         </div>
@@ -78,8 +78,8 @@
                 <i class="fa fa-list-alt pl-1"></i>زمان‌های قابل رزرو</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'user_requests' %}"> 
-                <i class="fa fa-tasks pl-1"></i>  پیگیری درخواست </a>
+              <a class="nav-link" href="{% url 'defense_schedule' %}"> 
+                <i class="fa fa-tasks pl-1"></i> جدول زمانبندی </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="">
@@ -103,8 +103,8 @@
 
   <!-- CONTENT-WRAPPER SECTION END-->
   <footer>
-      <div style="margin-left: 2rem;">
-          <div class="row">
+      <div >
+          <div class="row mrl-0">
               <div class="col-md-12">
                   دانشگاه آزاد اسلامی واحد تهران مرکزی | توسعه یافته توسط گروه مهندسی کامپیوتر
               </div>

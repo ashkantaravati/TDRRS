@@ -1,7 +1,10 @@
 body{
     font-family: 'vazir' !important;
 }
-
+.mrl-0{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
 .nav-tag {
     padding-right: 30px
 }
