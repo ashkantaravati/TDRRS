@@ -52,13 +52,13 @@
         <div class="dropdown mr-1 " >
           <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false" data-offset="10,20" style="background-color: #3b8baf;">
-            وقت بخیر{{ user.student.info_from_self }}! 
+            وقت بخیر {{ user.student.get_gender_display }} {{ user.student.last_name }}! 
           </button>
           <div class="dropdown-menu text-right" aria-labelledby="dropdownMenuOffset" >
             <a class="dropdown-item">
               <i class="fa fa-user-o"></i> آخرین ورود:</a>
-            <a class="dropdown-item">{{user.last_login}}</a>
-            <a class="dropdown-item" href="#"> تغییر گذواژه</a>
+            <a class="dropdown-item">{{user.jalali_last_login}}</a>
+            <a class="dropdown-item" href="{% url 'change_password' %}"> تغییر گذواژه</a>
             <a class="dropdown-item" href="{% url 'logout' %}">
               <i class="fa fa-power-off"></i> خروج </a>
           </div>

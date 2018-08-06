@@ -95,7 +95,7 @@
                 {% for reservation_request in reservation_requests %}
                 <tr>
                     <td>{{ reservation_request.requested_defense_time }}</td>
-                    <td>{{ reservation_request.request_date_time }}</td>
+                    <td>{{ reservation_request.formatted_request_datetime }}</td>
                     <td>{{ reservation_request.tracing_code }}</td>
                     <td>{{ reservation_request.get_status_display }}</td>
                     

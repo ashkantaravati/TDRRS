@@ -16,7 +16,7 @@ def get_dashboard(request):
     current_user=request.user
     if current_user.is_authenticated:
         current_student=current_user.student
-        reservation_requests=ReservationRequest.objects.filter(requesting_student=current_student)
+        reservation_requests=ReservationRequest.objects.filter(requesting_student=current_student).order_by('-status')
         current_defense=current_student.defensesession_set.get(is_archived=False)
         current_context={
             'reservation_requests': reservation_requests,
@@ -28,7 +28,7 @@ def get_dashboard(request):
 def get_defense_times(request):
     queried_defense_times = DefenseTime.objects.all()
     page = request.GET.get('page', 1)
-    paginator = Paginator(queried_defense_times, 3)
+    paginator = Paginator(queried_defense_times, 5)
     try:
         page_defense_times = paginator.page(page)
     except PageNotAnInteger:
@@ -59,29 +59,28 @@ def do_login(request):
         else:
             return render(request,'student/loginBs.html')        
             #return render(request,'student/login.html')
-
-def get_user_reservations(request):
-    reservation_requests=ReservationRequest.objects.all()
-    return render(request, 'student/user_requests.html',{'reservation_requests': reservation_requests})
-
 def do_submit_reservation(request):
     result={}
+    current_student=request.user.student
     if request.method=='POST':
-        defense_time_id=request.POST.get('id',None)
-        # some validations...
-        defense_time=DefenseTime.objects.filter(id=defense_time_id).first()
-        # check 
-        try:
-            reservereq=ReservationRequest.objects.create(
-                requested_defense_time=defense_time,
-                request_date_time=datetime.datetime.now(),
-                requesting_student=request.user.student,
-                tracing_code=get_random_string(length=12),
-                status=0,
-                )
-            result['msg']='درخواست شما: {} با موفقیت ثبت شد'.format(str(defense_time))
-        except Exception as err:
-            result['msg']='خطا {}'.format(err)
+        if current_student.has_active_request:
+            result['msg']='درخواست فعال دارید!'
+        else:
+            defense_time_id=request.POST.get('id',None)
+            defense_time=DefenseTime.objects.filter(id=defense_time_id).first()
+            try:
+                reservereq=ReservationRequest.objects.create(
+                    requested_defense_time=defense_time,
+                    request_date_time=datetime.datetime.now(),
+                    requesting_student=current_student,
+                    tracing_code=get_random_string(length=12),
+                    status=0,
+                    )
+                current_student.has_active_request=True
+                current_student.save()
+                result['msg']='درخواست شما: {} با موفقیت ثبت شد'.format(str(defense_time))
+            except Exception as err:
+                result['msg']='خطا {}'.format(err)
     #
     return JsonResponse(result)
 
@@ -123,18 +122,4 @@ def do_change_password(request):
     return render(request, 'student/change_password.html', {
         'form': form
     })
-    # elif request.method=='POST':
-    #     oldPasswd=request.POST['oldPasswd']
-    #     confPasswd=request.POST['confPasswd']
-    #     newPasswd=request.POST['newPasswd']
-    #     if oldPasswd==confPasswd:
-    #         currentUser=request.user
-    #         if currentUser.password==oldPasswd:
-    #             currentUser.password=newPasswd
-    #             currentUser.save()
-    #             request.session['result']='با موفقیت انجام شد'
-    #         else:
-    #             request.session['result']='اطلاعات وارد شده صحیح نمی‌باشد'
-    #     else:
-    #         request.session['result']='تکرار گذرواژه درست نیست'       
-    #     return render(request,'changePassword.html')
+    

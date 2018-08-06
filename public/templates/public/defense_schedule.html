@@ -17,6 +17,7 @@
                         <th > موضوع</th>
                         <th >رشته</th>
                         <th >توضیحات</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +30,8 @@
                       <td>{{schedule.subject}}</td>
                       <td>{{schedule.major}}</td>
                       <td>{{schedule.info}}</td>
+                      <td><a href="{% url 'defense_announcement' dsid=schedule.id %}">مشاهده جزئیات</a></td>
+                      
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -40,42 +43,51 @@
     <!--Bottom Table UI-->
     <div class="d-flex justify-content-center">
     
-            <!--Pagination -->
-            <nav class="my-4 pt-2">
-                <ul class="pagination pagination-circle pg-purple mb-0">
-    
-                    <!--First-->
-                    <li class="page-item disabled clearfix d-none d-md-block"><a class="page-link">صفحه‌ی اول</a></li>
-    
-                    <!--Arrow left-->
-                    <li class="page-item disabled">
-                        <a class="page-link" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">صفحه‌ی قبل</span>
-                    </a>
-                    </li>
-    
-                    <!--Numbers-->
-                    <li class="page-item active"><a class="page-link">۱</a></li>
-                    <li class="page-item"><a class="page-link">۲</a></li>
-                    <li class="page-item"><a class="page-link">۳</a></li>
-                    <li class="page-item"><a class="page-link">۴</a></li>
-                    <li class="page-item"><a class="page-link">۵</a></li>
-    
-                    <!--Arrow right-->
-                    <li class="page-item">
-                        <a class="page-link" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only">صفحه‌ی بعد</span>
-                    </a>
-                    </li>
-    
-                    <!--First-->
-                    <li class="page-item clearfix d-none d-md-block"><a class="page-link">آخرین صفحه</a></li>
-    
-                </ul>
-            </nav>
-            <!--/Pagination -->
+                      <!--Pagination -->
+                      <nav class="my-4 pt-2">
+                            {% if schedules.has_other_pages %}
+                    <ul class="pagination pagination-circle pg-purple mb-0">
+                        <!--First-->
+                        <li class="page-item clearfix d-none d-md-block"><a href="?page=1" class="page-link">صفحه‌ی اول</a></li>
+                        {% if schedules.has_previous %}
+                        
+                        <!--Arrow left-->
+                        <li class="page-item">
+                            <a class="page-link" aria-label="Previous" href="?page={{ schedules.previous_page_number }}">
+                                <span aria-hidden="true">قبلی</span>
+                                <span class="sr-only">قبلی</span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="disabled page-item"><span class="page-link">قبلی</span></li>
+                        {% endif %}
+                        {% for i in schedule.paginator.page_range %}
+                        {% if schedule.number == i %}
+                        <!--Numbers-->
+                        <li class="page-item active"><span class="page-link">{{ i }} </span></li>
+                        
+                        {% else %}
+                         <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                         {% endif %}
+                         {% endfor %}
+                         {% if schedules.has_next %}
+                        <!--Arrow right-->
+                        <li class="page-item">
+                            <a class="page-link" aria-label="Next" href="?page={{ schedules.next_page_number }}">
+                                <span aria-hidden="true">بعدی</span>
+                                <span class="sr-only">بعدی</span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="disabled page-item"><span class="page-link">بعدی</span></li>
+                        {% endif %}
+                        <!--First-->
+                        <li class="page-item clearfix d-none d-md-block"><a href="?page={{ schedules.end_index }}" class="page-link">آخرین صفحه</a></li>
+                        
+                    </ul>
+                    {% endif %}
+                </nav>
+                <!--/Pagination -->
     
         </div>
         <!--Bottom Table UI-->

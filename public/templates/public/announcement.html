@@ -1,0 +1,66 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=7">
+
+  <meta name="language" content="en-EN" />
+  <meta name="author" content="Ashkan Taravati" />
+  <title>جزئیات دفاع | {{session.subject}}</title>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'student/style.css' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.rawgit.com/rastikerdar/vazir-font/v18.0.1/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+  
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'student/main.css' %}"> {% block stylesheet %}{% endblock %}
+<style>
+
+@page {
+    size: A4 portrait;
+  }
+  
+</style>
+</head>
+<body dir="rtl">
+    <div class="text-center">
+        <img src="{% static 'img/Azad_University_logo.png' %}" alt="" width="128">
+        
+        <h1>{{session.subject}}</h1>
+        
+
+          <th class="font-weight-bold">دانشجو:</th> 
+           <td>{{session.student}}</td>
+            <br/>
+            {% if session.advisor %}
+            <th class="font-weight-bold">استاد مشاور:</th> 
+            <td>{{session.advisor}}</td>
+            <br/>
+            
+            {% endif %}
+            
+            <th class="font-weight-bold">استاد راهنما:</th> 
+            <td>{{session.supervisor}}</td>
+            <br/>
+            <th class="font-weight-bold">استاد داور:</th> 
+            <td>{{session.examiner}}</td>
+            <br/>
+            <th class="font-weight-bold">زمان برگزاری:</th> 
+            <td>{{session.designated_defense_time}}</td>
+            <br/>
+            <th class="font-weight-bold">مکان دفاع:</th> 
+            <td>{{session.designated_defense_time.defense_place}}</td>
+       
+        </div>
+    </body>
+</html>
