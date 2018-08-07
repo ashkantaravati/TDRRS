@@ -12,6 +12,7 @@
   <title>جزئیات دفاع | {{session.subject}}</title>
 
   <link rel="stylesheet" type="text/css" href="{% static 'student/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'student/style.css' %}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://cdn.rawgit.com/rastikerdar/vazir-font/v18.0.1/dist/font-face.css" rel="stylesheet" type="text/css" />
     <!--bootstrap-->
@@ -32,35 +33,93 @@
   
 </style>
 </head>
-<body dir="rtl">
-    <div class="text-center">
-        <img src="{% static 'img/Azad_University_logo.png' %}" alt="" width="128">
-        
-        <h1>{{session.subject}}</h1>
-        
-
-          <th class="font-weight-bold">دانشجو:</th> 
-           <td>{{session.student}}</td>
-            <br/>
-            {% if session.advisor %}
-            <th class="font-weight-bold">استاد مشاور:</th> 
-            <td>{{session.advisor}}</td>
-            <br/>
-            
-            {% endif %}
-            
-            <th class="font-weight-bold">استاد راهنما:</th> 
-            <td>{{session.supervisor}}</td>
-            <br/>
-            <th class="font-weight-bold">استاد داور:</th> 
-            <td>{{session.examiner}}</td>
-            <br/>
-            <th class="font-weight-bold">زمان برگزاری:</th> 
-            <td>{{session.designated_defense_time}}</td>
-            <br/>
-            <th class="font-weight-bold">مکان دفاع:</th> 
-            <td>{{session.designated_defense_time.defense_place}}</td>
-       
+<body>
+    <header>
+        <div >
+            <div class="row mrl-0">
+                <div class="col-md-12">
+  
+                <h4><a class="nav-link mr-3">
+                   سامانه رزرو اتاق دفاع
+                  <img src="../../static/img/Azad_University_logo.png" style="height: 40px; width: 40px;"> 
+                  </a></h4>
+                </div>
+  
+            </div>
         </div>
+    </header>
+    <!-- HEADER END-->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#5ca9ff !important; height: 40px;"> 
+  
+        <div class="collapse navbar-collapse rightToleft text-right" id="navbarSupportedContent" style="direction: rtl !important; ">
+            <!-- <ul class="navbar-nav ">
+              <li class="nav-item ">
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="{% url 'home' %}">
+                  <i class="fa fa-home"></i>صفحه اصلی
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'dashboard' %}">
+                  <i class="fa fa-user-graduate"></i>سامانه دانشجو</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin"> 
+                  <i class="fa fa-user-alt"></i>
+                   ورود پرسنل </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="">
+                  <i class="fa fa-question"></i> راهنما </a>
+              </li>
+            </ul> -->
+          </div>
+      </nav>
+    <!-- LOGO HEADER END-->
+  
+    <div class="content-wrapper text-center">
+      <img src="{% static 'img/Azad_University_logo.png' %}" alt="" width="128">
+        <div class="container rtlDirection text-right table-responsive blue-border " >
+              
+              <table class="">
+                  <h1>{{session.subject}}</h1>
+                  <thead class=" row-blue-bg">
+                      <tr class="filters">
+                          <th>دانشجو</th>
+                          <th>استاد مشاور</th>
+                          <th>استاد راهنما</th> 
+                          <th >استاد داور</th> 
+                          <th>زمان برگزاری</th> 
+                          <th>مکان دفاع</th>
+                      </tr>
+                  </thead>
+                  <tbody >
+                      <tr>
+                          <td>{{session.student}}
+                          </td>
+                          {% if session.advisor %}
+                          <td>{{session.advisor}}
+                          </td> {% endif %}
+                          <td>{{session.supervisor}}</td>
+                          <td>{{session.examiner}}</td>
+                          <td>{{session.designated_defense_time.defense_place}}</td>
+                      </tr>
+                  </tbody>
+             </table>
+        </div>
+    </div>  
+  
+    <!-- CONTENT-WRAPPER SECTION END-->
+    <footer>
+        <div >
+            <div class="row mrl-0">
+                <div class="col-md-12">
+                    دانشگاه آزاد اسلامی واحد تهران مرکزی | توسعه یافته توسط گروه مهندسی کامپیوتر
+                </div>
+  
+            </div>
+        </div>
+    </footer>
     </body>
 </html>
