@@ -25,6 +25,7 @@ def get_dashboard(request):
         return render(request, 'student/dashboard.html',current_context)
     else:
         return HttpResponseRedirect('login')
+
 def get_defense_times(request):
     queried_defense_times = DefenseTime.objects.all()
     page = request.GET.get('page', 1)
@@ -59,6 +60,7 @@ def do_login(request):
         else:
             return render(request,'student/loginBs.html')        
             #return render(request,'student/login.html')
+            
 def do_submit_reservation(request):
     result={}
     current_student=request.user.student

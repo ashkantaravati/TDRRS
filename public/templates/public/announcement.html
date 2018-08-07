@@ -80,16 +80,36 @@
   
     <div class="content-wrapper text-center">
       <img src="{% static 'img/Azad_University_logo.png' %}" alt="" width="128">
+      دانشگاه آزاد اسلامی واحد تهران مرکزی
+      دانشکده فنی و مهندسی
+      <h3>
+          {% if session.student.degree == 1 %}
+          پایان‌نامه برای دریافت درجه کارشناسی ارشد
+         {% else %}
+         پایان‌نامه برای دریافت درجه دکتری         
+         {% endif %} 
+
+        در رشته
+{{session.student.major}}
+      </br>
+      گرایش 
+      {% comment %} {{نداریم اینو تو مدل}} {% endcomment %}
+      </h3>
+      عنوان:
+      <h1>{{session.subject}}</h1>
         <div class="container rtlDirection text-right table-responsive blue-border " >
               
               <table class="">
-                  <h1>{{session.subject}}</h1>
                   <thead class=" row-blue-bg">
                       <tr class="filters">
-                          <th>دانشجو</th>
-                          <th>استاد مشاور</th>
-                          <th>استاد راهنما</th> 
-                          <th >استاد داور</th> 
+                          <th>ارائه‌کننده</th>
+                          <th>اساتید راهنما</th> 
+                          {% if session.advisor %}
+                          <th>اساتید مشاور</th>
+                          {% endif %}
+                          <th >داور</th>
+                          <th >نیمسال تحصیلی</th> 
+
                           <th>زمان برگزاری</th> 
                           <th>مکان دفاع</th>
                       </tr>
@@ -98,11 +118,13 @@
                       <tr>
                           <td>{{session.student}}
                           </td>
+                          <td>{{session.supervisor}}</td>
                           {% if session.advisor %}
                           <td>{{session.advisor}}
                           </td> {% endif %}
-                          <td>{{session.supervisor}}</td>
                           <td>{{session.examiner}}</td>
+                          <td>{{session.semester}}</td>
+                          <td>{{session.designated_defense_time}}</td>
                           <td>{{session.designated_defense_time.defense_place}}</td>
                       </tr>
                   </tbody>
