@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
 
 <head>
@@ -25,7 +26,7 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
         crossorigin="anonymous"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 
     <style>
         .fp-icon{
@@ -40,7 +41,7 @@
         <div class="container rounded mt-5 ">
             <div class="card card-container text-center">
                 <div class="">
-                    <img class="my-4 " src="../../static/img/Azad_University_logo.png" alt="" style="height:200px; width:150px;">
+                    <img class="my-4 " src="{% static 'common/img/Azad_University_logo.png' %}" alt="" style="height:200px; width:150px;">
                     <h4 id="profile-name" class="profile-name-card rtlDirection mb-1"> سامانه رزرواسیون اتاق دفاع </h4>
                     <h5>مجتمع دانشگاهی آیت‌الله هاشمی رفسنجانی </h5>
                 </div>

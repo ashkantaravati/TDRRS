@@ -11,7 +11,7 @@
   <meta name="author" content="Ashkan Taravati" />
   <title>{% block title %} {% endblock%}</title>
 
-  <link rel="stylesheet" type="text/css" href="{% static 'student/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'common/styles/style.css' %}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://cdn.rawgit.com/rastikerdar/vazir-font/v18.0.1/dist/font-face.css" rel="stylesheet" type="text/css" />
     <!--bootstrap-->
@@ -23,7 +23,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="{% static 'student/main.css' %}"> {% block stylesheet %}{% endblock %}
+  <link rel="stylesheet" type="text/css" href="{% static 'common/js/main.css' %}"> {% block stylesheet %}{% endblock %}
 
 </head>
 
@@ -32,10 +32,10 @@
   <header>
       <div class="row mrl-0">
               <div class="col-md-12">
-
+                  
               <h4><a class="nav-link">
                  سامانه رزرو اتاق دفاع
-                <img src="../../static/img/Azad_University_logo.png" style="height: 40px; width: 40px;"> 
+                <img src="{% static 'common/img/Azad_University_logo.png' %}" style="height: 40px; width: 40px;"> 
                 </a></h4>
               </div>
       </div>
@@ -97,9 +97,9 @@
   <!-- FOOTER SECTION END-->
   <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
   <!-- CORE JQUERY SCRIPTS -->
-  <script src="assets/js/jquery-1.11.1.js"></script>
+  {% comment %} <script src="assets/js/jquery-1.11.1.js"></script> {% endcomment %}
   <!-- BOOTSTRAP SCRIPTS  -->
-  <script src="assets/js/bootstrap.js"></script>
+  {% comment %} <script src="assets/js/bootstrap.js"></script> {% endcomment %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
   <script src="{% static 'student/main.js' %}"></script>
   {% block javascript %}{% endblock %}

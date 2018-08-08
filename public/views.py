@@ -21,3 +21,6 @@ def get_schedule(request):
 def get_announcement(request,dsid):
     session=DefenseSession.objects.get(pk=dsid)
     return render(request,'public/announcement.html',{'session':session})
+
+def guide(request):
+    return render(request,'public/guide.html')

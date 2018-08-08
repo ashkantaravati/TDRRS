@@ -11,11 +11,14 @@ from student.forms import myForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils.crypto import get_random_string
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
-# TODO authorization
+@login_required
 def get_dashboard(request):
     current_user=request.user
     if current_user.is_authenticated:
+        if current_user.student==None: #TODO doesn't do anything. handle it!
+            return HttpResponse('پرونده دانشجویی معتبر ندارید!')
         current_student=current_user.student
         reservation_requests=ReservationRequest.objects.filter(requesting_student=current_student).order_by('-status')
         current_defense=current_student.defensesession_set.get(is_archived=False)
@@ -28,7 +31,7 @@ def get_dashboard(request):
         return render(request, 'student/dashboard.html',current_context)
     else:
         return HttpResponseRedirect('login')
-
+@login_required
 def defense_times(request):
     if request.method=='GET':
         queried_defense_times = DefenseTime.objects.filter(status=1)
@@ -75,16 +78,17 @@ def defense_times(request):
                 #TODO if failed before inserting record, revert status to 1 
         return JsonResponse(result)
 
-
+@login_required
 def do_logout(request):
     logout(request)
     return HttpResponseRedirect('/')
 
 
 def do_login(request):
+    redir=''
     if request.method=='GET':
-        return render(request,'student/loginBs.html')        
-        #return render(request,'student/login.html')
+        redir=request.GET.get('next')
+        return render(request,'student/login.html')        
     elif request.method=='POST':
         
         username = request.POST.get('username')
@@ -92,11 +96,12 @@ def do_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+            if redir:
+                return HttpResponseRedirect(redir)
             return HttpResponseRedirect('dashboard')
-            
         else:
-            return render(request,'student/loginBs.html')        
-            #return render(request,'student/login.html')
+            request.session['error']='کاربری با این مشخصات وجود ندارد'
+            return render(request,'student/login.html')
 
 # def do_submit_reservation(request):
 #     result={}
@@ -122,6 +127,7 @@ def do_login(request):
 #                 result['msg']='خطا {}'.format(err)
 #     #
 #     return JsonResponse(result)
+@login_required
 @csrf_exempt
 def do_submit_cancellation(request):
     if request.method=='POST':
@@ -165,7 +171,7 @@ def do_submit_cancellation(request):
 #         print(request.POST)
 #         print(data)
 #         return JsonResponse(data)
-        
+@login_required    
 def do_change_password(request):
     # request.session['result']=''
     # if request.method=='GET':

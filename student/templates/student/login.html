@@ -1,56 +1,60 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ورود به سامانه رزرو اتاق دفاع</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-  <!-- Bulma Version 0.6.0 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" integrity="sha256-HEtF7HLJZSC3Le1HcsWbz1hDYFPZCqDhZa9QsCgVUdw=" crossorigin="anonymous" />
-  <link rel="stylesheet" type="text/css" href="../css/login.css">
-</head>
-<body>
-  <section class="hero is-info is-fullheight">
-    <div class="hero-body">
-      <div class="container has-text-centered">
-        <div class="column is-4 is-offset-4">
-          <h3 class="title has-text-white">ورود</h3>
-          <p class="subtitle has-text-white">سامانه رزرواسیون اتاق دفاع</p>
-          <div class="box">
-            
-            <form style="direction:rtl" action="{% url 'login' %}" method="post">
-                {% csrf_token %}
-              <div class="field">
-                <div class="control">
-                  <input class="input is-large" type="text" name="username" id="username" placeholder="شماره‌ دانشجویی" autofocus="">
-                </div>
-              </div>
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1s">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
 
-              <div class="field">
-                <div class="control">
-                  <input class="input is-large" type="password" name="password" id="password" placeholder="گذرواژه">
-                </div>
-              </div>
-              <div class="field">
-                <label class="checkbox">
-                  <input type="checkbox">
-                  مرا به خاطر بسپار
+    <title>Signin Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+
+    <style>
+
+    </style>
+  </head>
+
+  <body  style="background-color:	#6590f9;">
+    <div class="container rounded mt-5 text-center" style="width: 30%;">
+        <div class="card card-container">
+          <div class="text-center">
+              <img class="my-4 text-center" src="{% static 'common/img/Azad_University_logo.png' %}" alt="" style="height:180px; width:130px;">
+              <h4 id="profile-name" class="profile-name-card">  به سامانه رزرواسیون اتاق دفاع خوش آمدید </h4>
+          </div>
+          {% if request.session.error %}
+          
+          <div id="notice" class="alert alert-danger">
+            <strong>خطا!</strong> {{request.session.error}}
+          </div>
+          {% endif %}
+          <form class="form-signin px-5 " action="{% url 'login' %}" method="post">
+              {% csrf_token %}
+            <div class="text-right rtlDirection">
+              <label class="mt-1" for="inputَUserName" > نام کاربری</label>
+                <input class="form-control text-right"  type="username" id="inputEmail" name="username" placeholder="نام کاربری" required autofocus>
+              <label class="mt-1" for="inputَPassword" >گذرواژه</label>
+                <input class="form-control text-right" type="password" id="inputPassword" name="password" placeholder="گذرواژه" required>
+              <div class="checkbox mt-2 text-right">
+                <label>
+                    مرا به خاطر بسپار
+                    <input class="mt-1" type="checkbox" value="remember-me"> 
                 </label>
               </div>
-              <button type="submit" class="button is-block is-info is-large is-fullwidth">ورود</button>
-            </form>
-          </div>
-          <p class="has-text-white">
-            <a href="../">بازیابی گذرواژه</a> &nbsp;·&nbsp;
-            <a href="../">راهنمای سامانه</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-  
- 
-</body>
+              <div>
+                  <button class="btn btn-lg btn-primary btn-block" type="submit">ورود به سامانه</button>
+              </div >
+           
+              <div class="my-3 text-center">
+                  <a href="../">بازیابی گذرواژه</a> &nbsp;·&nbsp;
+                  <a href="{% url 'guide' %}">راهنمای سامانه</a>
+              </div>
+            </form><!-- /form -->
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+  </body>
 </html>
