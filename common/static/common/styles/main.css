@@ -1,10 +1,14 @@
-body{
+body {
     font-family: 'vazir' !important;
 }
-.mrl-0{
+* a{
+    cursor: pointer;
+}
+.mrl-0 {
     margin-left: 0 !important;
     margin-right: 0 !important;
 }
+
 .nav-tag {
     padding-right: 30px
 }
@@ -97,14 +101,250 @@ body{
 }
 
 /*# sourceMappingURL=main.css.map*/
+
 /*parisa-style____________start*/
-.rtlDirection{
+
+.rtlDirection {
     direction: rtl;
 }
-.blue-border{
+
+.blue-border {
     border: 2px solid #5ca9ff;
 }
-.row-blue-bg{
+
+.row-blue-bg {
     background-color: #5ca9ff;
 }
+
+.hoverable:hover{
+    font-size: 1.2rem;
+
+}
 /*parisa-style____________end*/
+
+/* GENERAL STYLES*/
+
+.set-radius-zero {
+    border-radius: 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+}
+
+.content-wrapper {
+    margin-top: 40px;
+    min-height: 600px;
+    padding-bottom: 60px;
+}
+
+.page-head-line {
+    font-weight: 900;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #5ca9ff;
+    text-transform: uppercase;
+    color: #5ca9ff;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+.btn {
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+.progress {
+    height: 8px;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+.login-icon {
+    height: 60px;
+    width: 60px;
+    padding: 13px;
+    border-radius: 50%;
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    background-color: #5ca9ff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+
+/* =============================================================
+   HEADER SECTION STYLES
+ ============================================================ */
+
+header {
+    background-color: #fff;
+    color: #fff;
+    padding: 10px;
+    text-align: right;
+    color: #5ca9ff;
+}
+
+/* =============================================================
+   LOGO SECTION STYLES
+ ============================================================ */
+
+.left-div {
+    padding-left: 30px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.navbar-brand {
+    width: 250px;
+    padding-top: 30px;
+}
+
+/* USER SETTINGS DIV */
+
+.user-settings-wrapper .nav>li>a {
+    position: relative;
+    display: block;
+    padding: 15px 18px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    background-color: #5ca9ff;
+    color: #fff;
+}
+
+.user-settings-wrapper {
+    margin-top: 10px;
+}
+
+.user-settings-wrapper li {
+    display: inline-block;
+}
+
+.user-settings-wrapper .dropdown-settings {
+    width: 200px;
+    padding: 10px;
+}
+
+.user-settings-wrapper .nav>li>a:hover,
+.user-settings-wrapper .nav>li>a:focus {
+    text-decoration: none;
+    background-color: #5ca9ff !important;
+}
+
+.user-settings-wrapper img {
+    height: 64px;
+    width: 64px;
+    border: 1px solid #000000;
+}
+
+.user-settings-wrapper .dropdown-menu {
+    margin: 0px;
+    border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    -webkit-border-radius: 0px !important;
+}
+
+.user-settings-wrapper .btn {
+    border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    -webkit-border-radius: 0px !important;
+}
+
+.user-settings-wrapper .media-heading {
+    padding-top: 10px;
+}
+
+/* MENU LINKS SECTION*/
+
+.menu-section {
+    background-color: #3D3D3D;
+}
+
+#menu-top a {
+    color: #FFF;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 10px 10px 10px;
+    text-transform: uppercase;
+}
+
+.menu-top-active {
+    background-color: #C36464;
+}
+
+.menu-section .nav>li>a:hover,
+.menu-section .nav>li>a:focus {
+    background-color: #5ca9ff !important;
+}
+
+.menu-section .dropdown-menu>li>a:hover,
+.menu-section .dropdown-menu>li>a:focus {
+    background-color: #5ca9ff !important;
+}
+
+.navbar-inverse {
+    background-color: #5ca9ff;
+    border-color: transparent;
+}
+
+.navbar-toggle {
+    background-color: #5ca9ff;
+    border: 1px solid #fff;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+/* =============================================================
+   FOOTER SECTION STYLES
+ ============================================================ */
+
+footer {
+    padding: 10px;
+    color: #fff;
+    font-size: 12px;
+    background-color: #5ca9ff;
+}
+
+footer a,
+footer a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+/*==============================================
+    DASHBOARD  STYLES    
+ =============================================*/
+
+/* DASHBOARD ICONS */
+
+
+.dashboard-div-icon {
+    height: 75px;
+    width: 75px;
+    border: 2px solid #fff;
+    padding: 20px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.dashboard-div-wrapper {
+    border-radius: 5px;
+    text-align: center;
+    padding: 15px;
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+.dashboard-div-wrapper .progress {
+    height: 2px;
+}
