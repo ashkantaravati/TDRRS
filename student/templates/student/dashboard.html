@@ -81,6 +81,9 @@
 <!--personal requests-->
 <div class="col-12 rMultiValueDictKeyErro rtlDirection text-right table-responsive mt-5 blue-border"  >
         <h4 class="m-2 "> پیگیری درخواست</h4>
+        <div id="notice" class="alert d-none">
+                <strong>Success!</strong> Indicates a successful or positive action.
+              </div>
         <table class="table ">
             <thead class="row-blue-bg">
                 <tr class="filters">
@@ -100,9 +103,10 @@
                     <td>{{ reservation_request.get_status_display }}</td>
                     
                     <td>
-                        <a class="" onclick="postCancelationRequest(this,'{% url 'cancel_reservation' %}');" href="#" data-id="{{reservationRequest.id}}">
+                        <a class="" onclick="submitIdAJAX(this,'{% url 'cancel_reservation' %}');" data-id="{{reservation_request.id}}">
                                 <i class="fa fa-trash 4x"></i>
                         </a>
+                       
                     </td>
                 
                 </tr>

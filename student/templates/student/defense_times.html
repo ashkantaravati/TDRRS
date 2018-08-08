@@ -5,7 +5,9 @@
 {% block content %}
 <div class="col-12 table-responsive rtlDirection text-right blue-border">
     <h4 class="m-2"> زمان‌های موجود</h4>
-
+    <div id="notice" class="alert d-none">
+            <strong>Success!</strong> Indicates a successful or positive action.
+          </div>
             <table class="table table-hover" >
                 <thead class=" row-blue-bg">
                     <tr class="filters">
@@ -30,9 +32,10 @@
                         <td>{{ defense_time.defense_place }}</td>
                                                     
                         <td>
-                        <a  onclick="postReservationRequest(this,'{% url 'submit_reservation' %}');" data-id="{{defense_time.id}}">
+                        <a  onclick="submitIdAJAX(this,'{% url 'defense_times' %}');" data-id="{{defense_time.id}}">
                             <i class="button fa fa-check">ثبت</i>
                         </a>
+
                         </td>
         
                         </tr>
@@ -99,23 +102,4 @@
 {% endblock %}
 
 {% block javascript %}
-    <script>
-
-        function postReservationRequest(sender,endpoint){
-            let did=$(sender).data('id');
-            //alert(did);
-            $.ajax({
-                url:endpoint,
-                data:{id:did},
-                dataType:'JSON',
-                method:'POST',
-                success:function(result){
-                    alert(result.msg);
-                },
-                error:function(){
-                    alert('error');
-                }
-            })
-            }
-    </script>
 {% endblock javascript %}

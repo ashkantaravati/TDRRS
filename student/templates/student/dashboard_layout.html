@@ -11,23 +11,23 @@
   <meta name="author" content="Ashkan Taravati" />
   <title>{% block title %} {% endblock%}</title>
 
-  <link rel="stylesheet" href="../../static/student/style.css">
-  <link rel="stylesheet" href="../../static/student/main.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://cdn.rawgit.com/rastikerdar/vazir-font/v18.0.1/dist/font-face.css" rel="stylesheet" type="text/css" />
-    <!--bootstrap-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+  <!--bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
   
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
+  crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
-    crossorigin="anonymous"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-  <link rel="stylesheet" type="text/css" href="{% static 'student/main.css' %}"> {% block stylesheet %}{% endblock %}
+  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="{% static 'common/styles/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'common/styles/main.css' %}"> 
+  {% block stylesheet %}{% endblock %}
 
 </head>
 
@@ -36,10 +36,10 @@
       <div >
           <div class="row mrl-0">
               <div class="col-md-12">
-
+                  
               <h4><a class="nav-link mr-3">
                  سامانه رزرو اتاق دفاع
-                <img src="../../static/img/Azad_University_logo.png" style="height: 40px; width: 40px;"> 
+                <img src="{% static 'common/img/Azad_University_logo.png' %}" style="height: 40px; width: 40px;"> 
                 </a></h4>
               </div>
 
@@ -117,11 +117,11 @@
   <!-- FOOTER SECTION END-->
   <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
   <!-- CORE JQUERY SCRIPTS -->
-  <script src="assets/js/jquery-1.11.1.js"></script>
+  {% comment %} <script src="assets/js/jquery-1.11.1.js"></script> {% endcomment %}
   <!-- BOOTSTRAP SCRIPTS  -->
-  <script src="assets/js/bootstrap.js"></script>
+  {% comment %} <script src="assets/js/bootstrap.js"></script> {% endcomment %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-  <script src="{% static 'student/main.js' %}"></script>
+  <script src="{% static 'common/js/main.js' %}"></script>
   {% block javascript %}{% endblock %}
 </body>
 

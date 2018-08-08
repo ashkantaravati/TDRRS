@@ -52,3 +52,30 @@ let updatePage = function( resp ) {
      $.ajax(ajaxOptions);
     }
 //js for nav in responsive mode
+
+
+function submitIdAJAX(sender,endpoint){
+    let did=$(sender).data('id');
+    $.ajax({
+        url:endpoint,
+        data:{id:did},
+        dataType:'JSON',
+        method:'POST',
+        success:function(result){
+            console.log('success:'+ result.msg);
+            let noticeBox=$('#notice');
+            noticeBox.removeClass('alert-danger');
+            noticeBox.addClass('alert-info');
+            noticeBox.removeClass('d-none');
+            noticeBox.html(result.msg);
+        },
+        error:function(){
+            console.log('ERROR:submitReservation failed');
+            let noticeBox=$('#notice');
+            noticeBox.removeClass('alert-info');
+            noticeBox.addClass('alert-danger');
+            noticeBox.removeClass('d-none');
+            noticeBox.html('<strong>خطا</strong>');
+        }
+    })
+    }
