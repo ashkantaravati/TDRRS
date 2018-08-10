@@ -63,11 +63,18 @@
           </div>
         </div>
       </div>
-      <div class="collapse navbar-collapse rtlDirection text-right" id="navbarSupportedContent" >
-          <ul class="navbar-nav ">
+      <button class="navbar-toggle rtlDirection text-right d-xl-none d-lg-none" data-toggle="collapse" data-target=".navHeaderCollapse"> 
+        <i class="fa fa-bars fa-2x" style="color: aliceblue;"></i>
+        <span class="icon-bar"> </span>
+        <span class="icon-bar"> </span>
+        <span class="icon-bar"> </span>
+        <span class="icon-bar"> </span>
+      </button>
+      <div class="collapse navbar-collapse rtlDirection navHeaderCollapse" id="navbarSupportedContent" >
+          <ul class="nav navbar-nav navbar-right text-right">
             <li class="nav-item ">
             </li>
-            <li class="nav-item ">
+            <li class="nav-item">
               <a class="nav-link" href="{% url 'dashboard' %}">
                 <i class="fa fa-home pl-1"></i>صفحه اصلی
               </a>
