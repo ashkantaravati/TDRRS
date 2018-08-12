@@ -3,12 +3,12 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from student.models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-# Create your views here.
+
 def get_home(request):
     return render(request,'public/index.html')
 def get_schedule(request):
-    queried_schedules=DefenseSession.objects.all()
-    #TODO filter to current semester
+    queried_schedules=DefenseSession.objects.filter(is_archived=False)
+    #TODO filter to current semester -- is_scheduled=True
     page = request.GET.get('page', 1)
     paginator = Paginator(queried_schedules, 5)
     try:

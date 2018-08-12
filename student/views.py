@@ -140,7 +140,7 @@ def do_submit_cancellation(request):
                 submitted_defense_time=reservation_request.requested_defense_time
                 current_defense=current_student.defensesession_set.get(is_archived=False)
                 try:
-                    current_defense.defense_time=None
+                    current_defense.designated_defense_time=None
                     current_defense.save()
                     current_student.has_active_request=False
                     current_student.save()

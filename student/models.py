@@ -147,6 +147,9 @@ class DefenseSession(models.Model):
     @property
     def major(self):
         return self.student.major
+    @property
+    def is_scheduled(self):
+        return True if not self.designated_defense_time== None else False
 
 # Helpers and such...
 def format_datetime(datetime_obj):
