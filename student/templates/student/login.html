@@ -21,7 +21,7 @@
   </head>
 
   <body  style="background-color:	#f8f8f8;">
-    <div class="container rounded mt-5 text-center" style="width: 23%;">
+    <div class="container rounded mt-5 text-center  ">
         <div class="card card-container">
           <div class="text-center row-blue-bg">
              <h5 id="profile-name" class="profile-name-card mt-3">  به سامانه رزرواسیون اتاق دفاع خوش آمدید </h5>
@@ -41,8 +41,8 @@
                 <input class="form-control text-right" type="password" id="inputPassword" name="password" placeholder="گذرواژه" required>
               <div class="checkbox mt-2 text-right">
                 <label>
+                  <input class="mt-1" type="checkbox" value="remember-me"> 
                     مرا به خاطر بسپار
-                    <input class="mt-1" type="checkbox" value="remember-me"> 
                 </label>
               </div>
               <div>
@@ -50,7 +50,7 @@
               </div >
            
               <div class="my-3 text-center">
-                  <a href="../">بازیابی گذرواژه</a> &nbsp;·&nbsp;
+                  <!-- <a href="../">بازیابی گذرواژه</a> &nbsp;·&nbsp; -->
                   <a href="{% url 'guide' %}">راهنمای سامانه</a>
               </div>
             </form><!-- /form -->

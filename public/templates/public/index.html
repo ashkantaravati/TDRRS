@@ -45,23 +45,28 @@
                     <h5>مجتمع دانشگاهی آیت‌الله هاشمی رفسنجانی </h5>
                 </div>
                 <div class="container ">
-                    <div class=" row">
+                    <div class=" row mt-4">
                         <div class="col-lg-4 ">
-                            <i class="fa fa-calendar-alt fa-5x fp-icon my-4"></i>
+                            <!-- <i class="fa fa-calendar-alt fa-5x fp-icon my-4"></i> -->
+                            <img class="mb-3" src="{% static 'common/img/calendar.png' %}">
+
                         </br>
                             <p>
                                 <a class="btn btn-outline-primary" href="{% url 'defense_schedule' %}" role="button">جدول زمانبندی</a>
                             </p>
                         </div>
                         <div class="col-lg-4">
-                                <i class="fa fa-user-alt fa-5x fp-icon my-4"></i>
+                                <!-- <i class="fa fa-user-alt fa-5x fp-icon my-4"></i> -->
+                                <img class="mb-3" src="{% static 'common/img/personnel1.png' %}">
                             </br>
                             <p>
                                 <a class="btn btn-outline-primary" href="/admin" role="button">ورود پرسنل</a>
                             </p>
                         </div>
                         <div class="col-lg-4">
-                                <i class="fa fa-user-graduate fa-5x fp-icon my-4"></i>
+                                <!-- <i class="fa fa-user-graduate fa-5x fp-icon my-4"></i> -->
+                                <img class="mb-3" src="{% static 'common/img//student1.png' %}">
+
                             </br>
                             <p>
                                 <a class="btn btn-outline-primary" href="{% url 'dashboard' %}" role="button">ورود دانشجو</a>
