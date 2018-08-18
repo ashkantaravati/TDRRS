@@ -11,7 +11,7 @@
             <table class="table table-hover " >
                 <thead class=" row-blue-bg">
                     <tr class="filters">
-                        <th >ردیف</th>
+                        <th >مشخصه</th>
                         <th >زمان</th>
                         <th > مکان</th>
                         <th > موضوع</th>
@@ -22,9 +22,12 @@
                 </thead>
                 <tbody>
                   {% for schedule in schedules %}
+                  {% if schedule.designated_defense_time %}
+                  
                   
                   <tr>
-                      <td>{{forloop.counter}}</td>
+                      {% comment %} <td>{{forloop.counter}}</td> {% endcomment %}
+                      <td>{{schedule.id}}</td>
                       <td>{{schedule.designated_defense_time}}</td>
                       <td>{{schedule.designated_defense_time.defense_place}}</td>
                       <td>{{schedule.subject}}</td>
@@ -33,6 +36,7 @@
                       <td><a href="{% url 'defense_announcement' dsid=schedule.id %}">مشاهده جزئیات</a></td>
                       
                     </tr>
+                    {% endif %}
                     {% endfor %}
                 </tbody>
             </table>

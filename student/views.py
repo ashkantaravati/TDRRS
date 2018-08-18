@@ -6,7 +6,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponse,HttpResponseRedirect,JsonResponse
 from django.template.loader import get_template
 import datetime
-from .models import DefenseTime,ReservationRequest,DefenseSession
+from .models import DefenseTime,ReservationRequest,DefenseSession,Semester
 from student.forms import myForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils.crypto import get_random_string
@@ -35,6 +35,7 @@ def get_dashboard(request):
 def defense_times(request):
     if request.method=='GET':
         queried_defense_times = DefenseTime.objects.filter(status=1)
+        current_semester = Semester.current_semester()
         #TODO filter to current_semester
         page = request.GET.get('page', 1)
         paginator = Paginator(queried_defense_times, 5)
@@ -44,7 +45,11 @@ def defense_times(request):
             page_defense_times = paginator.page(1)
         except EmptyPage:
             page_defense_times = paginator.page(paginator.num_pages)
-        return render(request, 'student/defense_times.html', {'defense_times': page_defense_times})
+        print(current_semester)
+        return render(request, 'student/defense_times.html', {
+            'defense_times': page_defense_times,
+            'current_semester': current_semester
+            })
     if request.method=='POST':
         result={}
         current_student=request.user.student

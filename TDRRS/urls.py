@@ -4,5 +4,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls,name='admin'),
     url(r'^student/', include('student.urls')),
-    url(r'^', include('public.urls'))
+    url(r'^', include('public.urls')),
+    url(r'^plate/', include('django_spaghetti.urls')),
 ]

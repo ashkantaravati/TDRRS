@@ -14,15 +14,19 @@ PERSIAN_WEEKDAY={'0':u'شنبه','1':u'یکشبنه','2':u'دوشنبه','3':u'�
 GENDER_CHOICES=[(0,u'سرکار خانم'),(1,u'جناب آقای')]
 PROF_TITLE_CHOICES=[(0,u'مهندس'),(1,u'دکتر'),(3,u'پروفسور')]
 class Semester(models.Model):
-    beginning_year=models.IntegerField(verbose_name='سال شروع')
-    ending_year=models.IntegerField(verbose_name='سال پایان')
-    semester_type=models.IntegerField(choices=SEMESTER_CHOICES,verbose_name='نوع نیمسال')
+    beginning_year = models.IntegerField(verbose_name='سال شروع')
+    ending_year = models.IntegerField(verbose_name='سال پایان')
+    semester_type = models.IntegerField(choices=SEMESTER_CHOICES,verbose_name='نوع نیمسال')
+    is_archived = models.BooleanField(verbose_name='بایگانی شده است؟')
     class Meta:
         verbose_name=u'نیمسال تحصیلی'
         verbose_name_plural=u'نیمسال‌های تحصیلی'        
     def __str__(self):
         return u"{} {}-{}".format(self.get_semester_type_display(),self.beginning_year,self.ending_year)
-#مکان دفاع
+    def current_semester():
+        # This function fetches the latest semester record
+        latest_semester = Semester.objects.filter(is_archived=False).order_by('-id')[0]
+        return latest_semester
 class DefensePlace(models.Model):
     place_name=models.CharField(max_length=50,verbose_name='نام مستعار اتاق دفاع')
     room_name=models.CharField(max_length=50,verbose_name='نام یا شماره اتاق')

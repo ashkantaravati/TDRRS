@@ -22,6 +22,9 @@
                 </thead>
                 <tbody>
                         {% for defense_time in defense_times %}
+                        {% if defense_time.defense_place.semester == current_semester %}
+                        
+                        
                     
                     <tr>
                         <td>{{defense_time.id}}</td>
@@ -39,6 +42,7 @@
                         </td>
         
                         </tr>
+                        {% endif %}
                             {% endfor %}
                 </tbody>
             </table>
