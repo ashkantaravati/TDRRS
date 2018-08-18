@@ -7,7 +7,7 @@
 
     <div class="col-12 table-responsive rtlDirection text-right blue-border">
      <h4 class="m-2 "> برنامه جلسات دفاع </h4>
-
+     <input class="form-control mb-3" id="myInput" type="text" placeholder="جستجو کنید">
             <table class="table table-hover " >
                 <thead class=" row-blue-bg">
                     <tr class="filters">
@@ -20,7 +20,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="#myTable">
                   {% for schedule in schedules %}
                   {% if schedule.designated_defense_time %}
                   
@@ -97,5 +97,14 @@
         <!--Bottom Table UI-->
     
     </div>
-
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
 {% endblock %}

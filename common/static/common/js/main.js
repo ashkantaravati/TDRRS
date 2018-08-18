@@ -20,62 +20,66 @@ function HTTPSafeMethodTest(method) {
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 }
 // ... the AJAX request is successful
-let updatePage = function( resp ) {
-    $('#result').html( JSON.stringify(resp));
+let updatePage = function (resp) {
+    $('#result').html(JSON.stringify(resp));
     //console.log(JSON.parse(resp));
-  };
+};
 
-  // ... the AJAX request fails
-  let printError = function( req, status, err ) {
-    console.log( 'something went wrong', status, err );
-  };
- $.ajaxSetup(
-     {
-         beforeSend:function(xhr){
-             xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
-         }
-     }
- ) 
- 
- 
- function doAjax(){
-     let myfname=$('#id_firstName').val();
-      // Create an object to describe the AJAX request
-      let ajaxOptions = {
-        url:'/ajaxView',
-        type:'POST',
+// ... the AJAX request fails
+let printError = function (req, status, err) {
+    console.log('something went wrong', status, err);
+};
+$.ajaxSetup({
+    beforeSend: function (xhr) {
+        xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+    }
+})
+
+
+function doAjax() {
+    let myfname = $('#id_firstName').val();
+    // Create an object to describe the AJAX request
+    let ajaxOptions = {
+        url: '/ajaxView',
+        type: 'POST',
         dataType: 'json',
-        data:{firstName:myfname},    
+        data: {
+            firstName: myfname
+        },
         success: updatePage,
         error: printError,
-      };
-     $.ajax(ajaxOptions);
-    }
+    };
+    $.ajax(ajaxOptions);
+}
 //js for nav in responsive mode
 
 
-function submitIdAJAX(sender,endpoint){
-    let did=$(sender).data('id');
+function submitIdAJAX(sender, endpoint) {
+    let did = $(sender).data('id');
     $.ajax({
-        url:endpoint,
-        data:{id:did},
-        dataType:'JSON',
-        method:'POST',
-        success:function(result){
-            console.log('success:'+ result.msg);
-            let noticeBox=$('#notice');
+        url: endpoint,
+        data: {
+            id: did
+        },
+        dataType: 'JSON',
+        method: 'POST',
+        success: function (result) {
+            console.log('success:' + result.msg);
+            let noticeBox = $('#notice');
             noticeBox.removeClass('alert-danger');
             noticeBox.addClass('alert-info');
             noticeBox.removeClass('d-none');
             noticeBox.html(result.msg);
         },
-        error:function(){
+        error: function () {
             console.log('ERROR:submitReservation failed');
-            let noticeBox=$('#notice');
+            let noticeBox = $('#notice');
             noticeBox.removeClass('alert-info');
             noticeBox.addClass('alert-danger');
             noticeBox.removeClass('d-none');
             noticeBox.html('<strong>خطا</strong>');
         }
     })
-    }
+}
+
+
