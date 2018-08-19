@@ -7,8 +7,11 @@
 
     <div class="col-12 table-responsive rtlDirection text-right blue-border">
      <h4 class="m-2 "> برنامه جلسات دفاع </h4>
-     <input class="form-control mb-3" id="myInput" type="text" placeholder="جستجو کنید">
-            <table class="table table-hover " >
+     <div> 
+     <input class="form-control my-3"  type="text" placeholder="جستجو کنید" style="width: 50%;">
+     <button class="btn btn-primary" id="myInput" onkeyup="myFunction()" >search</button>
+    </div>
+            <table class="table table-hover" >
                 <thead class=" row-blue-bg">
                     <tr class="filters">
                         <th >مشخصه</th>
@@ -25,7 +28,7 @@
                   {% if schedule.designated_defense_time %}
                   
                   
-                  <tr>
+                  <tr id="trId">
                       {% comment %} <td>{{forloop.counter}}</td> {% endcomment %}
                       <td>{{schedule.id}}</td>
                       <td>{{schedule.designated_defense_time}}</td>
@@ -98,13 +101,32 @@
     
     </div>
 <script>
-    $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
+    // $(document).ready(function () {
+    //     $("#myInput").on("keyup", function () {
+    //         var value = $(this).val().toLowerCase();
+    //         $("#myTable tr").filter(function () {
+    //             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    //         });
+    //     });
+    // });
+
+    function myFunction() {
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsById("trId");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            ;debugger
+            if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+            }       
+        }
+    }
 </script>
 {% endblock %}
