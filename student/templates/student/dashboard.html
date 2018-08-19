@@ -103,7 +103,7 @@
                     <td>{{ reservation_request.get_status_display }}</td>
                     
                     <td>
-                        <a class="" onclick="submitIdAJAX(this,'{% url 'cancel_reservation' %}');" data-id="{{reservation_request.id}}">
+                        <a class="" onclick="myFunction(this,'{% url 'cancel_reservation' %}');" data-id="{{reservation_request.id}}">
                                 <i class="fa fa-trash 4x hoverable"></i>
                         </a>
                        
