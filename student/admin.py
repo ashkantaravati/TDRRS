@@ -12,12 +12,12 @@ class DefenseTimeAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.index_template = 'admin2/index.html'
-admin.site.login_template = 'admin2/login.html'
+# admin.site.index_template = 'admin2/index.html'
+# admin.site.login_template = 'admin2/login.html'
 # admin.site.logout_template=''
 # admin.site.password_change_done_template=''
 # admin.site.password_change_template=''
-admin.site.app_index_template = 'admin2/app_index.html'
+# admin.site.app_index_template = 'admin2/app_index.html'
 
 admin.site.register(models.DefenseTime, DefenseTimeAdmin)
 #admin.site.register(BarTime, BarTimeAdmin)
