@@ -85,12 +85,18 @@ function submitIdAJAX(sender, endpoint) {
 }
 
 
-function myFunction() {
+function myFunction(sender,endpoint) {
     let txt;
-    let question = window.confirm("are u sure?");
+    let question = confirm("آیامطمئنید؟ بازگشتی وجود نخواهد داشت");
     if (question == true) {
+        //alert('True')
         // txt = "درخواست شما ثبت شد";
         submitIdAJAX(sender,endpoint);
+        //alert(x)
+        setTimeout(function() {
+            location.reload()
+          }, 1500);
+
     }
     // document.getElementById("demo").innerHTML = txt;
 }

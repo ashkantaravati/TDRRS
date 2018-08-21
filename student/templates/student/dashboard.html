@@ -101,12 +101,12 @@
                     <td>{{ reservation_request.formatted_request_datetime }}</td>
                     <td>{{ reservation_request.tracing_code }}</td>
                     <td>{{ reservation_request.get_status_display }}</td>
-                    
                     <td>
+                        {% if reservation_request.status == 0 %}
                         <a class="" onclick="myFunction(this,'{% url 'cancel_reservation' %}');" data-id="{{reservation_request.id}}">
                                 <i class="fa fa-trash 4x hoverable"></i>
                         </a>
-                       
+                       {% endif %}
                     </td>
                 
                 </tr>
