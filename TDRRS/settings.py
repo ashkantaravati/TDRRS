@@ -25,12 +25,13 @@ PREREQ_APPS = [
     'django.contrib.staticfiles',
     'django_jalali',
     'django_spaghetti',
+    'bootstrap3',
 ]
 
 PROJECT_APPS = [
+    'common',
     'student',
     'public',
-    'common'
 ]
 
 INSTALLED_APPS = PREREQ_APPS + PROJECT_APPS

@@ -8,10 +8,10 @@
     <div class="col-12 table-responsive rtlDirection text-right blue-border">
      <h4 class="m-2 "> برنامه جلسات دفاع </h4>
      <div> 
-     <input class="form-control my-3"  type="text" placeholder="جستجو کنید" style="width: 50%;">
-     <button class="btn btn-primary" id="myInput" onkeyup="myFunction()" >search</button>
+     <input class="form-control my-3" id="myInput" onkeyup="myFunction()"  type="text" placeholder="جستجو کنید" style="width: 50%;">
+     <!-- <button class="btn btn-primary"  >search</button> -->
     </div>
-            <table class="table table-hover" >
+            <table class="table table-hover" id="myTable">
                 <thead class=" row-blue-bg">
                     <tr class="filters">
                         <th >مشخصه</th>
@@ -23,7 +23,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody id="#myTable">
+                <tbody >
                   {% for schedule in schedules %}
                   {% if schedule.designated_defense_time %}
                   
@@ -113,14 +113,16 @@
     function myFunction() {
         var input, filter, table, tr, td, i;
         input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
+        //filter = input.value.toUpperCase();
+        filter = input.value;
         table = document.getElementById("myTable");
-        tr = table.getElementsById("trId");
+        tr = table.getElementsByTagName("tr");
         for (i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td")[0];
-            ;debugger
+            //debugger;
             if (td) {
-            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            // if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            if (td.innerHTML.indexOf(filter) > -1) {
                 tr[i].style.display = "";
             } else {
                 tr[i].style.display = "none";
