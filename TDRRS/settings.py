@@ -26,6 +26,7 @@ PREREQ_APPS = [
     'django_jalali',
     'django_spaghetti',
     'bootstrap3',
+    'django_tables2'
 ]
 
 PROJECT_APPS = [
