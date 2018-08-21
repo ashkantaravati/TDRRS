@@ -1,0 +1,15 @@
+{% extends "public/public_layout.html" %}
+{% load render_table from django_tables2 %}
+{% block title %}
+برنامه جلسات دفاع
+{% endblock title %}
+
+{% block content %}
+
+    <div class="col-12 table-responsive rtlDirection text-right blue-border">
+     <h4 class="m-2 "> برنامه جلسات دفاع </h4>
+     {% render_table table %}
+
+    </div>
+          
+{% endblock %}

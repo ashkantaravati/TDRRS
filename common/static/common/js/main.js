@@ -65,6 +65,8 @@ function submitIdAJAX(sender, endpoint) {
         method: 'POST',
         success: function (result) {
             console.log('success:' + result.msg);
+        ;debugger
+
             let noticeBox = $('#notice');
             noticeBox.removeClass('alert-danger');
             noticeBox.addClass('alert-info');
@@ -83,3 +85,19 @@ function submitIdAJAX(sender, endpoint) {
 }
 
 
+function myFunction(sender,endpoint) {
+    let txt;
+    let question = confirm("آیامطمئنید؟ بازگشتی وجود نخواهد داشت");
+    if (question == true) {
+        //alert('True')
+        // txt = "درخواست شما ثبت شد";
+        submitIdAJAX(sender,endpoint);
+        //alert(x)
+        setTimeout(function() {
+            location.reload()
+          }, 1500);
+
+    }
+    // document.getElementById("demo").innerHTML = txt;
+}
+// https://www.w3schools.com/js/tryit.asp?filename=tryjs_prompt manba

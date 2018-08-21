@@ -16,6 +16,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 PREREQ_APPS = [ 
+    'bootstrap_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -24,12 +25,14 @@ PREREQ_APPS = [
     'django.contrib.staticfiles',
     'django_jalali',
     'django_spaghetti',
+    'bootstrap3',
+    'django_tables2'
 ]
 
 PROJECT_APPS = [
+    'common',
     'student',
     'public',
-    'common'
 ]
 
 INSTALLED_APPS = PREREQ_APPS + PROJECT_APPS

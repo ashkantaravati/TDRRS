@@ -139,7 +139,7 @@ class DefenseSession(models.Model):
     class Meta:
         verbose_name=u'جلسه دفاع مصوب شورا'
         verbose_name_plural=u'جلسات دفاع مصوب شورا' 
-        ordering = ['designated_defense_time']
+       # ordering = ['designated_defense_time']
     def __str__(self):
         return u"{} توسط {} مصوب {}".format(self.subject,self.student,str(self.approval_date))
     @property
