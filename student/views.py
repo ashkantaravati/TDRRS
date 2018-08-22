@@ -11,9 +11,14 @@ from student.forms import myForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils.crypto import get_random_string
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,user_passes_test
+from .utils import user_has_associated_student
 
+
+def denied(request):
+    return render(request,'student/denied.html')
 @login_required
+@user_passes_test(user_has_associated_student, login_url='/student/denied/')
 def get_dashboard(request):
     current_user=request.user
     if current_user.is_authenticated:
@@ -108,30 +113,7 @@ def do_login(request):
             request.session['error']='کاربری با این مشخصات وجود ندارد'
             return render(request,'student/login.html')
 
-# def do_submit_reservation(request):
-#     result={}
-#     current_student=request.user.student
-#     if request.method=='POST':
-#         if current_student.has_active_request:
-#             result['msg']='درخواست فعال دارید!'
-#         else:
-#             defense_time_id=request.POST.get('id',None)
-#             defense_time=DefenseTime.objects.filter(id=defense_time_id).first()
-#             try:
-#                 reservereq=ReservationRequest.objects.create(
-#                     requested_defense_time=defense_time,
-#                     request_date_time=datetime.datetime.now(),
-#                     requesting_student=current_student,
-#                     tracing_code=get_random_string(length=12),
-#                     status=0,
-#                     )
-#                 current_student.has_active_request=True
-#                 current_student.save()
-#                 result['msg']='درخواست شما: {} با موفقیت ثبت شد'.format(str(defense_time))
-#             except Exception as err:
-#                 result['msg']='خطا {}'.format(err)
-#     #
-#     return JsonResponse(result)
+
 @login_required
 @csrf_exempt
 def do_submit_cancellation(request):
@@ -162,20 +144,7 @@ def do_submit_cancellation(request):
             result['msg']='عملیات غیر مجاز!'
         return JsonResponse(result)
 
-# def get_ajax_view(request):
-    
-#     if request.method=='GET':
-#         mf=myForm()
-#         return render(request,'student/ajax.html',{'form':mf})
-#     if request.method=='POST':
-#         data={}
-#         data['user']=request.user.__str__()
-#         #data['fn']=mf.firstName
-#         data['firstName']=request.POST['firstName']        
-#         data['time']=datetime.datetime.now()
-#         print(request.POST)
-#         print(data)
-#         return JsonResponse(data)
+
 @login_required    
 def do_change_password(request):
     # request.session['result']=''

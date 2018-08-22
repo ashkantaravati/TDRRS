@@ -68,7 +68,7 @@
       <ul class="nav navbar-nav navbar-right text-right ">
         <li class="nav-item ">
           <a class="nav-link" href="javascript:window.print()">
-            <i class="fa fa-print"></i> پرینت
+            <i class="fa fa-print"></i> چاپ
           </a>
         </li>
         <li class="nav-item">
@@ -92,24 +92,31 @@
         {% endif %}
       </h5>
       <h5>
-        در رشته {{session.student.major}} گرایش {% comment %} {{نداریم اینو تو مدل}} {% endcomment %}</h5>
+        در رشته {{session.student.major}} </h5>
+        <p class="d-none d-print-block"><br></p>
       <h5>عنوان</h5>
-      <p>{{session.subject}}</p>
-
+      <p class="font-weight-bold">{{session.subject}}</p>
+      <p class="d-none d-print-block"><br></p>
       <h5>ارائه‌کننده</h5>
       <p>{{session.student}}</p>
+      <p class="d-none d-print-block"><br></p>
       <h5>اساتید راهنما</h5>
       <p>{{session.supervisor}}</p>
+      <p class="d-none d-print-block"><br></p>
       {% if session.advisor %}
       <h5> اساتید مشاور</h5>
       <p>{{session.advisor}}</p>
       {% endif %}
+      <p class="d-none d-print-block"><br></p>
       <h5>داور</h5>
       <p>{{session.examiner}}</p>
+      <p class="d-none d-print-block"><br></p>
       <h5>نیمسال تحصیلی</h5>
       <p>{{session.semester}}</p>
+      <p class="d-none d-print-block"><br></p>
       <h5>زمان برگزاری</h5>
       <p>{{session.designated_defense_time}}</p>
+      <p class="d-none d-print-block"><br></p>
       <h5>مکان دفاع</h5>
       <p>{{session.designated_defense_time.defense_place}}</p>
   </div>
