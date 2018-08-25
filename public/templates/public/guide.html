@@ -1,12 +1,114 @@
+{% load staticfiles %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=7">
+
+    <meta name="language" content="en-EN" />
+    <meta name="author" content="Ashkan Taravati" />
+    <title>{% block title %} {% endblock%}</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'common/styles/main.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.rawgit.com/rastikerdar/vazir-font/v18.0.1/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+    <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>  -->
+
+    <script src="{% static 'common/js/main.js' %}"></script>
+    {% block stylesheet %}{% endblock %}
+    <link rel="icon" href="{% static 'common/img/Azad_University_logo.png' %}" type="image/x-icon" />
 </head>
+
 <body>
-    راهنما
+
+    <header>
+        <div class="row mrl-0">
+            <div class="col-md-12">
+
+                <h4>
+                    <a class="nav-link">
+                        سامانه رزرو اتاق دفاع
+                        <img src="{% static 'common/img/Azad_University_logo.png' %}" style="height: 40px; width: 40px;">
+                    </a>
+                </h4>
+            </div>
+        </div>
+    </header>
+    <!-- HEADER END-->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#5ca9ff !important;">
+
+        <button class="navbar-toggle rtlDirection text-right d-xl-none d-lg-none" data-toggle="collapse" data-target=".navHeaderCollapse">
+            <i class="fa fa-bars fa-2x" style="color: aliceblue;"></i>
+            <span class="icon-bar"> </span>
+            <span class="icon-bar"> </span>
+            <span class="icon-bar"> </span>
+            <span class="icon-bar"> </span>
+        </button>
+        <div class="collapse navbar-collapse rightToleft navHeaderCollapse" id="navbarSupportedContent" style="direction: rtl !important; ">
+            <ul class="nav navbar-nav navbar-right text-right">
+                <li class="nav-item ">
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{% url 'defense_schedule' %}">
+                        <i class="fa fa-undo"></i> بازگشت
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- LOGO HEADER END-->
+
+    <div class="content-wrapper text-right rtlDirection ">
+        <div class="container col-10 blue-border p-4">
+            این بخش قابل استفاده‌ی عموم کاربران می‌باشد و محدودیتی برای ورود به آن وجود ندارد.
+            <br/>
+            برای ورود به این بخش می‌بایست بر روی دکمه‌ی
+            «جدول زمان‌بندی» کلیک نماییم.
+            در این صفحه‌ فهرست
+            تمام جلسات دفاعیه‌ی آتی که زمان آن‌ها قطعی شده است قابل مشاهده است. برای مشاهده‌ی جزئیات دفاعیه‌ی مورد نظر میتوانید
+            با کلیک بر روی پیوند «مشاهده‌ی جزئیات» وارد صفحه‌ی جزئیات آن شوید. 
+            <br/>
+            این صفحه دارای قابلیت چاپ می‌باشد به این معنا
+            که با دادن دستور چاپ به مرورگر (Ctrl+P) یا فشردن دکمه‌ی «چاپ» در نوار ابزار ، صفحه‌ تبدیل به یک اعلامیه‌ی
+            استاندارد آماده‌ی چاپ می‌شود.
+        </div>
+
+
+
+        </div>
+    </div>
+
+    <!-- CONTENT-WRAPPER SECTION END-->
+    <footer>
+        <div>
+            <div class="row mrl-0">
+                <div class="col-md-12">
+                    دانشگاه آزاد اسلامی واحد تهران مرکزی | توسعه یافته توسط گروه مهندسی کامپیوتر
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- FOOTER SECTION END-->
+    <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY SCRIPTS -->
+    {% comment %}
+    <script src="assets/js/jquery-1.11.1.js"></script> {% endcomment %}
+    <!-- BOOTSTRAP SCRIPTS  -->
+    {% comment %}
+    <script src="assets/js/bootstrap.js"></script> {% endcomment %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    {% block javascript %}{% endblock %}
 </body>
+
 </html>
