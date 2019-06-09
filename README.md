@@ -5,6 +5,22 @@ IAUCTB Reservation System for Thesis Defense Conference Room ,which was actually
 This software is developed using Django, a web framework for Python, as its backend, and bootstrap (css framework) and jQuery (JavaScript library) as its frontend rendered using DTL (Django Template Language).
 
 ## Screenshots
+![Homepage](https://raw.githubusercontent.com/ashkantaravati/TDRRS/master/docs/screenshots/01.png)
+![demo](https://raw.githubusercontent.com/ashkantaravati/TDRRS/master/docs/screenshots/02.png)
+![demo](https://raw.githubusercontent.com/ashkantaravati/TDRRS/master/docs/screenshots/03.png)
+![demo](https://raw.githubusercontent.com/ashkantaravati/TDRRS/master/docs/screenshots/04.png)
+![demo](https://raw.githubusercontent.com/ashkantaravati/TDRRS/master/docs/screenshots/05.png)
+![demo](https://raw.githubusercontent.com/ashkantaravati/TDRRS/master/docs/screenshots/06.png)
+![demo](https://raw.githubusercontent.com/ashkantaravati/TDRRS/master/docs/screenshots/07.png)
+![demo](https://raw.githubusercontent.com/ashkantaravati/TDRRS/master/docs/screenshots/08.png)
+![demo](https://raw.githubusercontent.com/ashkantaravati/TDRRS/master/docs/screenshots/09.png)
+![demo](https://raw.githubusercontent.com/ashkantaravati/TDRRS/master/docs/screenshots/10.png)
+![demo](https://raw.githubusercontent.com/ashkantaravati/TDRRS/master/docs/screenshots/11.png)
+![demo](https://raw.githubusercontent.com/ashkantaravati/TDRRS/master/docs/screenshots/12.png)
+![demo](https://raw.githubusercontent.com/ashkantaravati/TDRRS/master/docs/screenshots/13.png)
+![demo](https://raw.githubusercontent.com/ashkantaravati/TDRRS/master/docs/screenshots/14.png)
+
+
 
 
 # Product Requirements
