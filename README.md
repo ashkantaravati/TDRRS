@@ -1,7 +1,14 @@
-# TDRRS
-IAUCTB Thesis Defense Room Reservation System; Actually my bachelor's project
+# Specifications
+## A Brief Introduction
+IAUCTB Reservation System for Thesis Defense Conference Room ,which was actually my bachelor's project, is a simple responsive web-based information system that makes possible for the IAUCTB students to reserve a time and place for their thesis defense sessions as it has been a pain for the faculty of engineering to handle tremendous requests for conference rooms from students. It also makes it easier to be informed about ongoing defense sessions.
+## System Specifications
+This software is developed using Django, a web framework for Python, as its backend, and bootstrap (css framework) and jQuery (JavaScript library) as its frontend rendered using DTL (Django Template Language).
 
-## DONE
+## Screenshots
+
+
+# Product Requirements
+## Developed
 * Login
 * Logout
 * Display last login datetime in dashboard
@@ -22,8 +29,6 @@ IAUCTB Thesis Defense Room Reservation System; Actually my bachelor's project
 * Use PEP-8
 * Submit reservation requests by inserting into database
 * string representations
-
-## Primary TODO 
 * Authorization
 * Add Staff Model
 * Add Professor Model

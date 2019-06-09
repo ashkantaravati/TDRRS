@@ -18,3 +18,5 @@ build/
 tests/report/
 db.sqlite3
 migrations
+env
+.vscode
